@@ -6,7 +6,6 @@ const navLinks = document.querySelector('.nav-links');
 if (navToggle) {
   navToggle.addEventListener('click', () => {
     navLinks.classList.toggle('open');
-    navLinks.style.display = navLinks.classList.contains('open') ? 'flex' : '';
   });
 }
 
@@ -14,7 +13,6 @@ if (navToggle) {
 document.querySelectorAll('.nav-links a').forEach((a) => {
   a.addEventListener('click', () => {
     navLinks.classList.remove('open');
-    navLinks.style.display = '';
   });
 });
 

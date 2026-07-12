@@ -54,5 +54,11 @@ mycoinsoft/
 - 회사 소재지(현재 "대한민국 서울"로만 되어 있습니다. 정확한 주소가 있으면 `index.html` 푸터의 `footer-info` 부분을 수정해주세요)
 - 코인교환 페이지의 각 코인별 "코인정보 / 백서 / 홈페이지" 실제 링크 (관리자 페이지에서 코인별로 입력 가능)
 
+## 6) SEO 설정
+- `robots.txt`, `sitemap.xml` 을 사이트 루트에 함께 포함했습니다. 도메인이 `mycoinsoft.com` 이 아니거나 다르게 배포하시는 경우, 두 파일과 각 페이지 `<head>` 안의 `canonical` / `og:url` 값을 실제 도메인으로 바꿔주세요.
+- `index.html`, `exchange.html` 에 검색엔진용 메타태그(title, description, keywords), Open Graph, Twitter 카드, 구조화 데이터(JSON-LD, Organization)를 넣었습니다.
+- `admin.html` 은 검색엔진에 노출되지 않도록 `noindex` 처리되어 있고 `robots.txt`에서도 제외했습니다.
+- 배포 후 Google Search Console(https://search.google.com/search-console) 에 사이트를 등록하고 `sitemap.xml` 을 제출하시면 색인이 더 빨라집니다.
+
 ## A.I 서비스 · 서비스안내 섹션
 말씀하신 대로 이 두 섹션은 관리자 입력 없이 첨부 PPT 내용을 그대로 반영해 코드에 직접 넣었습니다. 문구나 가격을 바꾸실 때는 `index.html` 의 `id="ai"`, `id="service"` 구역을 직접 수정하시면 됩니다.

@@ -36,7 +36,7 @@ if (contactForm) {
         }),
       });
 
-      contactStatus.textContent = '문의가 접수되었습니다. 빠른 시일 내에 답변드리겠습니다.';
+      contactStatus.textContent = '문의가 접수되었습니다. 빠른 시간내에 연락드리겠습니다.';
       contactStatus.className = 'contact-status ok';
       contactForm.reset();
     } catch (err) {
