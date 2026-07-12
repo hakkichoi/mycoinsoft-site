@@ -69,8 +69,8 @@
 .coin-badge {
   width: 42px; height: 42px;
   border-radius: 50%;
-  background: linear-gradient(145deg, rgba(203,167,107,0.28), rgba(203,167,107,0.06));
-  border: 1px solid rgba(203,167,107,0.35);
+  background: linear-gradient(145deg, rgba(150,101,42,0.28), rgba(150,101,42,0.06));
+  border: 1px solid rgba(150,101,42,0.35);
   display: flex; align-items: center; justify-content: center;
   font-family: var(--font-display);
   font-weight: 700;
@@ -111,7 +111,7 @@
   font-size: 14px;
   transition: background 0.2s, color 0.2s;
 }
-.btn-exchange:hover { background: var(--teal); color: #06140F; }
+.btn-exchange:hover { background: var(--teal); color: #FBF3DA; }
 
 .pagination {
   display: flex;
@@ -182,8 +182,8 @@
 .modal-close:hover { color: var(--text); }
 
 .modal-notice {
-  background: rgba(52, 228, 195, 0.08);
-  border: 1px solid rgba(52, 228, 195, 0.25);
+  background: rgba(14, 140, 119, 0.08);
+  border: 1px solid rgba(14, 140, 119, 0.25);
   border-radius: var(--radius-sm);
   padding: 16px 18px;
   font-size: 13.5px;
@@ -240,7 +240,7 @@
   padding: 14px;
   border-radius: 100px;
   background: var(--teal);
-  color: #06140F;
+  color: #FBF3DA;
   font-weight: 700;
   font-size: 15px;
   border: none;

@@ -48,8 +48,8 @@ body.admin-body {
   font-size: 14px;
   transition: background 0.2s, color 0.2s;
 }
-.admin-nav button:hover { background: rgba(255,255,255,0.04); color: var(--text); }
-.admin-nav button.active { background: rgba(52,228,195,0.1); color: var(--teal); }
+.admin-nav button:hover { background: rgba(30,25,10,0.05); color: var(--text); }
+.admin-nav button.active { background: rgba(14,140,119,0.1); color: var(--teal); }
 
 .admin-logout {
   position: absolute;
@@ -90,7 +90,7 @@ body.admin-body {
 
 .btn-add {
   background: var(--teal);
-  color: #06140F;
+  color: #FBF3DA;
   padding: 10px 20px;
   border-radius: 100px;
   font-size: 13.5px;
@@ -123,7 +123,7 @@ table.admin-table td {
   vertical-align: middle;
 }
 table.admin-table tr:last-child td { border-bottom: none; }
-table.admin-table tr:hover td { background: rgba(255,255,255,0.02); }
+table.admin-table tr:hover td { background: rgba(30,25,10,0.03); }
 
 .row-actions { display: flex; gap: 8px; }
 .row-actions button {
@@ -138,7 +138,7 @@ table.admin-table tr:hover td { background: rgba(255,255,255,0.02); }
 .row-actions button.danger:hover { color: var(--danger); border-color: var(--danger); }
 
 .badge { padding: 3px 10px; border-radius: 100px; font-size: 11.5px; font-weight: 600; }
-.badge.on { background: rgba(52,228,195,0.14); color: var(--teal); }
+.badge.on { background: rgba(14,140,119,0.14); color: var(--teal); }
 .badge.off { background: rgba(140,147,166,0.14); color: var(--text-faint); }
 
 .admin-modal-overlay {
