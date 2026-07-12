@@ -30,6 +30,7 @@ function showShell() {
   loadCoinsAdmin();
   loadSettings();
   loadRequests();
+  loadContacts();
 }
 
 loginForm.addEventListener('submit', async (e) => {
@@ -281,6 +282,37 @@ async function loadRequests() {
       <td>${r.receive_amount} ${r.receive_coin}</td>
       <td>${r.wallet_address}</td>
       <td>${r.message || '-'}</td>
+    </tr>`
+    )
+    .join('');
+}
+
+// ============================================================
+// Contact messages (문의하기 내역)
+// ============================================================
+async function loadContacts() {
+  const { data, error } = await sb
+    .from('contact_messages')
+    .select('*')
+    .order('created_at', { ascending: false });
+  const tbody = document.querySelector('#contacts-table tbody');
+  if (error) {
+    tbody.innerHTML = `<tr><td colspan="5">불러오기 실패</td></tr>`;
+    return;
+  }
+  if (!data.length) {
+    tbody.innerHTML = `<tr><td colspan="5">아직 문의 내역이 없습니다.</td></tr>`;
+    return;
+  }
+  tbody.innerHTML = data
+    .map(
+      (c) => `
+    <tr>
+      <td>${new Date(c.created_at).toLocaleString('ko-KR')}</td>
+      <td>${c.name}</td>
+      <td>${c.phone}</td>
+      <td>${c.email}</td>
+      <td>${c.message}</td>
     </tr>`
     )
     .join('');

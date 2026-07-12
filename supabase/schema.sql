@@ -50,6 +50,16 @@ create table if not exists exchange_requests (
   created_at timestamptz not null default now()
 );
 
+-- 5) 문의하기 (홈페이지 문의 폼 - 이름/전화번호/이메일/메시지)
+create table if not exists contact_messages (
+  id bigint generated always as identity primary key,
+  name text not null,
+  phone text not null,
+  email text not null,
+  message text not null,
+  created_at timestamptz not null default now()
+);
+
 -- ============================================================
 -- RLS (Row Level Security)
 -- ============================================================
@@ -57,6 +67,7 @@ alter table timeline_events enable row level security;
 alter table coins enable row level security;
 alter table site_settings enable row level security;
 alter table exchange_requests enable row level security;
+alter table contact_messages enable row level security;
 
 -- 공개 조회 (누구나)
 create policy "public read timeline" on timeline_events for select using (true);
@@ -76,6 +87,11 @@ create policy "admin write settings" on site_settings for all
 -- 교환 신청 : 누구나 등록 가능(회원가입 없음), 조회는 관리자만
 create policy "public insert exchange" on exchange_requests for insert with check (true);
 create policy "admin read exchange" on exchange_requests for select
+  using (auth.role() = 'authenticated');
+
+-- 문의하기 : 누구나 등록 가능(회원가입 없음), 조회는 관리자만
+create policy "public insert contact" on contact_messages for insert with check (true);
+create policy "admin read contact" on contact_messages for select
   using (auth.role() = 'authenticated');
 
 -- ============================================================

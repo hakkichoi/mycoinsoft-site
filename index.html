@@ -18,7 +18,7 @@
       <li><a href="#ai">A.I 서비스</a></li>
       <li><a href="exchange.html">코인교환</a></li>
       <li><a href="#service">서비스안내</a></li>
-      <li><a href="#footer-location">오시는 길</a></li>
+      <li><a href="#contact">문의하기</a></li>
       <li><a href="#footer-company">회사정보</a></li>
     </ul>
     <a href="exchange.html" class="nav-cta">코인 교환하기</a>
@@ -162,6 +162,11 @@
         <div class="glass-price">일반형 토큰 <b>50만원</b><br>상급 기능형 토큰 <b>협의</b><br><span class="glass-eta">평균 3일 예상</span></div>
       </div>
     </div>
+
+    <div class="ai-cta reveal">
+      <span>서비스가 궁금하신가요? 지금 바로 문의해보세요.</span>
+      <a href="#contact" class="btn btn-primary">문의하기</a>
+    </div>
   </div>
 </section>
 
@@ -237,6 +242,63 @@
   </div>
 </section>
 
+<!-- ============================================================ CONTACT (문의하기) ============================================================ -->
+<section class="contact-section" id="contact">
+  <div class="wrap">
+    <div class="eyebrow">Contact</div>
+    <h2 class="section-title reveal">문의하기</h2>
+    <p class="section-desc reveal">코인 제작, 백서, 홈페이지, 상장 등 어떤 것이든 편하게 문의해주세요. 전화, 이메일, 아래 문의 양식 모두 가능합니다.</p>
+
+    <div class="contact-layout">
+      <div class="contact-direct reveal">
+        <a class="contact-direct-item" href="tel:01055617107">
+          <div class="icon-circle">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1.1-.3 1.2.4 2.5.6 3.8.6.6 0 1 .4 1 1v3.6c0 .6-.4 1-1 1C10.6 21.1 2.9 13.4 2.9 3.7c0-.6.4-1 1-1H7.5c.6 0 1 .4 1 1 0 1.3.2 2.6.6 3.8.1.4 0 .8-.3 1.1L6.6 10.8z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+          </div>
+          <div>
+            <div class="lbl">전화 문의</div>
+            <div class="val">010-5561-7107</div>
+          </div>
+        </a>
+        <a class="contact-direct-item" href="mailto:choihakki@gmail.com">
+          <div class="icon-circle">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M3.5 6.5l8.5 6.5 8.5-6.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div>
+            <div class="lbl">이메일 문의</div>
+            <div class="val">choihakki@gmail.com</div>
+          </div>
+        </a>
+      </div>
+
+      <div class="contact-form-card reveal">
+        <form id="contact-form">
+          <div class="form-two">
+            <div class="form-row">
+              <label for="ct-name">이름</label>
+              <input type="text" id="ct-name" name="name" required>
+            </div>
+            <div class="form-row">
+              <label for="ct-phone">전화번호</label>
+              <input type="tel" id="ct-phone" name="phone" required>
+            </div>
+          </div>
+          <div class="form-row">
+            <label for="ct-email">이메일주소</label>
+            <input type="email" id="ct-email" name="email" required>
+          </div>
+          <div class="form-row">
+            <label for="ct-message">메시지</label>
+            <textarea id="ct-message" name="message" placeholder="문의하실 내용을 입력해주세요." required></textarea>
+          </div>
+          <button type="submit" class="contact-submit">문의하기</button>
+          <div class="contact-status" id="contact-status"></div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ============================================================ FOOTER ============================================================ -->
 <footer class="site-footer" id="footer-company">
   <div class="wrap">
@@ -244,16 +306,16 @@
       <div class="footer-brand">
         <a href="index.html" class="brand">MYCOINSOFT<span class="dot">.</span></a>
         <p>블록체인 전문 서비스의 시작과 끝을 함께 합니다. 코인 제작부터 백서, 홈페이지, 거래소 상장까지 — 마이코인소프트가 A.I와 함께 지원합니다.</p>
-        <div class="footer-info" id="footer-location">
-          회사명 : 마이코인소프트 (MYCOINSOFT)<br>
+        <div class="footer-info">
+          운영사 : KMC FOUNDATION / (주)케이엠씨파운데이션<br>
           대표 : 최학기<br>
           소재지 : 대한민국 서울<br>
-          사업자등록번호 : 000-00-00000
+          사업자등록번호 : 468-87-01792
         </div>
       </div>
 
       <div>
-        <div class="eyebrow">Contact</div>
+        <div class="eyebrow">Channel</div>
         <div class="contact-cards">
           <a class="contact-card" href="https://t.me/choihakki" target="_blank" rel="noopener">
             <img class="qr" src="assets/telegram-qr.png" alt="텔레그램 QR 코드">
@@ -288,5 +350,6 @@
 <script src="js/supabase-config.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
 <script src="js/main.js" defer></script>
+<script src="js/contact.js" defer></script>
 </body>
 </html>

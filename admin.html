@@ -40,6 +40,7 @@
       <li><button data-panel="panel-coins">코인 교환 목록</button></li>
       <li><button data-panel="panel-settings">환율 설정</button></li>
       <li><button data-panel="panel-requests">교환 신청 내역</button></li>
+      <li><button data-panel="panel-contacts">문의 내역</button></li>
     </ul>
     <div class="admin-logout">
       <button id="logout-btn">로그아웃</button>
@@ -113,6 +114,22 @@
         <table class="admin-table" id="requests-table">
           <thead><tr><th>일시</th><th>이름</th><th>연락처</th><th>이메일</th><th>보내는 코인</th><th>받는 코인</th><th>지갑주소</th><th>메시지</th></tr></thead>
           <tbody><tr><td colspan="8">불러오는 중...</td></tr></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 문의 내역 -->
+    <section class="admin-panel" id="panel-contacts">
+      <div class="admin-head">
+        <div>
+          <h1>문의 내역</h1>
+          <p>홈페이지 "문의하기" 섹션을 통해 접수된 문의입니다. (choihakki@gmail.com 으로도 함께 발송됩니다)</p>
+        </div>
+      </div>
+      <div class="admin-table-wrap">
+        <table class="admin-table" id="contacts-table">
+          <thead><tr><th>일시</th><th>이름</th><th>전화번호</th><th>이메일</th><th>메시지</th></tr></thead>
+          <tbody><tr><td colspan="5">불러오는 중...</td></tr></tbody>
         </table>
       </div>
     </section>

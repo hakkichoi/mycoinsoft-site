@@ -13,7 +13,7 @@ const SUPABASE_ANON_KEY = 'YOUR-ANON-PUBLIC-KEY';
 // 코인 교환 신청 알림을 받을 관리자 이메일 (FormSubmit 사용)
 // 최초 1회, 실제 폼 제출을 한 번 해서 해당 이메일로 온 확인 메일에서
 // 활성화 링크를 눌러야 정상적으로 이메일이 전달됩니다. (formsubmit.co 안내 참고)
-const ADMIN_NOTIFY_EMAIL = 'admin@mycoinsoft.com';
+const ADMIN_NOTIFY_EMAIL = 'choihakki@gmail.com';
 
 let _supabaseClient = null;
 function getSupabase() {
