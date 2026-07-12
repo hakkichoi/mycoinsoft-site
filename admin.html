@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>관리자 | 마이코인소프트</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/exchange.css">
+<link rel="stylesheet" href="css/admin.css">
+</head>
+<body class="admin-body">
+
+<!-- ============================================================ LOGIN ============================================================ -->
+<div class="admin-login" id="admin-login">
+  <div class="login-box">
+    <div class="brand">MYCOINSOFT<span class="dot">.</span></div>
+    <p class="sub">관리자 계정으로 로그인하세요.</p>
+    <form id="login-form">
+      <div class="form-row">
+        <label for="login-email">이메일</label>
+        <input type="email" id="login-email" name="email" required>
+      </div>
+      <div class="form-row">
+        <label for="login-password">비밀번호</label>
+        <input type="password" id="login-password" name="password" required>
+      </div>
+      <button type="submit" class="modal-submit">로그인</button>
+      <div class="form-status err" id="login-error"></div>
+    </form>
+  </div>
+</div>
+
+<!-- ============================================================ SHELL ============================================================ -->
+<div class="admin-shell" id="admin-shell" style="display:none;">
+  <aside class="admin-sidebar">
+    <div class="brand">MYCOINSOFT<span class="dot">.</span></div>
+    <ul class="admin-nav">
+      <li><button class="active" data-panel="panel-timeline">소개 · 연혁</button></li>
+      <li><button data-panel="panel-coins">코인 교환 목록</button></li>
+      <li><button data-panel="panel-settings">환율 설정</button></li>
+      <li><button data-panel="panel-requests">교환 신청 내역</button></li>
+    </ul>
+    <div class="admin-logout">
+      <button id="logout-btn">로그아웃</button>
+    </div>
+  </aside>
+
+  <main class="admin-main">
+
+    <!-- 소개 · 연혁 -->
+    <section class="admin-panel active" id="panel-timeline">
+      <div class="admin-head">
+        <div>
+          <h1>소개 · 연혁 관리</h1>
+          <p>홈페이지 "소개" 섹션에 흐르는 연도별 비즈니스 내역입니다.</p>
+        </div>
+        <button class="btn-add" id="add-timeline-btn">+ 항목 추가</button>
+      </div>
+      <div class="admin-table-wrap">
+        <table class="admin-table" id="timeline-table">
+          <thead><tr><th>순서</th><th>연도</th><th>내용</th><th>관리</th></tr></thead>
+          <tbody><tr><td colspan="4">불러오는 중...</td></tr></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 코인 교환 목록 -->
+    <section class="admin-panel" id="panel-coins">
+      <div class="admin-head">
+        <div>
+          <h1>코인 교환 목록 관리</h1>
+          <p>코인교환 페이지에 노출되는 코인과 USDT 기준 가격을 관리합니다.</p>
+        </div>
+        <button class="btn-add" id="add-coin-btn">+ 코인 추가</button>
+      </div>
+      <div class="admin-table-wrap">
+        <table class="admin-table" id="coins-table">
+          <thead><tr><th>심볼</th><th>이름</th><th>USDT 가격</th><th>노출</th><th>순서</th><th>관리</th></tr></thead>
+          <tbody><tr><td colspan="6">불러오는 중...</td></tr></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 환율 설정 -->
+    <section class="admin-panel" id="panel-settings">
+      <div class="admin-head">
+        <div>
+          <h1>환율 설정</h1>
+          <p>VICT로 신청할 때 USDT로 환산하는 기준 비율입니다.</p>
+        </div>
+      </div>
+      <div class="settings-card">
+        <form id="settings-form">
+          <div class="form-row">
+            <label for="vict-rate-input">1 VICT = ? USDT</label>
+            <input type="number" id="vict-rate-input" step="any" min="0" required>
+          </div>
+          <button type="submit" class="modal-submit" style="width:auto;padding:11px 26px;">저장</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- 교환 신청 내역 -->
+    <section class="admin-panel" id="panel-requests">
+      <div class="admin-head">
+        <div>
+          <h1>교환 신청 내역</h1>
+          <p>사용자가 제출한 교환 신청 기록입니다. (이메일로도 함께 발송됩니다)</p>
+        </div>
+      </div>
+      <div class="admin-table-wrap">
+        <table class="admin-table" id="requests-table">
+          <thead><tr><th>일시</th><th>이름</th><th>연락처</th><th>이메일</th><th>보내는 코인</th><th>받는 코인</th><th>지갑주소</th><th>메시지</th></tr></thead>
+          <tbody><tr><td colspan="8">불러오는 중...</td></tr></tbody>
+        </table>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<!-- ============================================================ MODALS ============================================================ -->
+<div class="admin-modal-overlay" id="timeline-modal">
+  <div class="admin-modal">
+    <h2 id="timeline-modal-title">항목 추가</h2>
+    <form id="timeline-form">
+      <div class="form-two">
+        <div class="form-row">
+          <label for="tl-year">연도</label>
+          <input type="text" id="tl-year" name="year" placeholder="예: 2024" required>
+        </div>
+        <div class="form-row">
+          <label for="tl-order">정렬 순서</label>
+          <input type="number" id="tl-order" name="sort_order" value="0" required>
+        </div>
+      </div>
+      <div class="form-row">
+        <label for="tl-title">내용</label>
+        <input type="text" id="tl-title" name="title" placeholder="예: 국내 최초 중형 코인거래소 오픈" required>
+      </div>
+      <div style="display:flex; gap:10px; margin-top:10px;">
+        <button type="submit" class="modal-submit">저장</button>
+        <button type="button" class="modal-submit" style="background:transparent;border:1px solid var(--line);color:var(--text-mute);" data-close-modal>취소</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="admin-modal-overlay" id="coin-modal">
+  <div class="admin-modal">
+    <h2 id="coin-modal-title">코인 추가</h2>
+    <form id="coin-form">
+      <div class="form-two">
+        <div class="form-row">
+          <label for="c-symbol">심볼</label>
+          <input type="text" id="c-symbol" name="symbol" placeholder="예: BTC" required>
+        </div>
+        <div class="form-row">
+          <label for="c-name">이름</label>
+          <input type="text" id="c-name" name="name" placeholder="예: Bitcoin" required>
+        </div>
+      </div>
+      <div class="form-two">
+        <div class="form-row">
+          <label for="c-price">USDT 가격</label>
+          <input type="number" id="c-price" name="price_usdt" step="any" min="0" required>
+        </div>
+        <div class="form-row">
+          <label for="c-order">정렬 순서</label>
+          <input type="number" id="c-order" name="sort_order" value="0" required>
+        </div>
+      </div>
+      <div class="form-row">
+        <label for="c-info">코인정보 링크</label>
+        <input type="text" id="c-info" name="info_url" placeholder="https://...">
+      </div>
+      <div class="form-row">
+        <label for="c-whitepaper">백서 링크</label>
+        <input type="text" id="c-whitepaper" name="whitepaper_url" placeholder="https://...">
+      </div>
+      <div class="form-row">
+        <label for="c-homepage">홈페이지 링크</label>
+        <input type="text" id="c-homepage" name="homepage_url" placeholder="https://...">
+      </div>
+      <div class="form-row" style="display:flex; align-items:center; gap:8px;">
+        <input type="checkbox" id="c-active" name="active" style="width:auto;">
+        <label for="c-active" style="margin:0;">사이트에 노출</label>
+      </div>
+      <div style="display:flex; gap:10px; margin-top:10px;">
+        <button type="submit" class="modal-submit">저장</button>
+        <button type="button" class="modal-submit" style="background:transparent;border:1px solid var(--line);color:var(--text-mute);" data-close-modal>취소</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="js/supabase-config.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/admin.js"></script>
+</body>
+</html>
