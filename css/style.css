@@ -205,6 +205,15 @@ section { position: relative; }
   padding: 168px 0 120px;
   position: relative;
   overflow: hidden;
+  background: linear-gradient(120deg, #F6D96C, #FCE9AE, #BFE4D8, #F0C875, #F6D96C);
+  background-size: 400% 400%;
+  animation: hero-gradient-shift 20s ease infinite;
+}
+
+@keyframes hero-gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 .hero::before {
@@ -218,10 +227,10 @@ section { position: relative; }
 }
 
 .hero-grid {
-  display: grid;
-  grid-template-columns: 1.15fr 0.85fr;
-  gap: 56px;
+  display: flex;
+  flex-direction: column;
   align-items: center;
+  text-align: center;
   position: relative;
 }
 
@@ -238,6 +247,7 @@ section { position: relative; }
   font-size: clamp(34px, 4.6vw, 54px);
   line-height: 1.22;
   margin-bottom: 22px;
+  max-width: 760px;
 }
 
 .hero h1 em {
@@ -251,11 +261,11 @@ section { position: relative; }
 .hero p {
   color: var(--text-mute);
   font-size: 17px;
-  max-width: 500px;
-  margin: 0 0 34px;
+  max-width: 560px;
+  margin: 0 auto 34px;
 }
 
-.hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+.hero-actions { display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; }
 
 .btn {
   display: inline-flex;
@@ -282,23 +292,15 @@ section { position: relative; }
 
 .btn-ghost:hover { border-color: var(--teal-dim); transform: translateY(-2px); }
 
-/* Hero visual — stylised "chain of blocks" illustration */
-.hero-visual {
-  position: relative;
-  aspect-ratio: 1 / 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.hero-visual svg { width: 100%; height: 100%; }
-
 .hero-stats {
   display: flex;
   gap: 40px;
   margin-top: 56px;
   flex-wrap: wrap;
+  justify-content: center;
 }
+
+.hero-stat { text-align: center; }
 
 .hero-stat b {
   font-family: var(--font-display);
@@ -312,9 +314,8 @@ section { position: relative; }
   color: var(--text-faint);
 }
 
-@media (max-width: 900px) {
-  .hero-grid { grid-template-columns: 1fr; }
-  .hero-visual { max-width: 340px; margin: 0 auto; }
+@media (prefers-reduced-motion: reduce) {
+  .hero { animation: none; }
 }
 
 /* ---------------- Introduction / ledger tape ---------------- */
@@ -511,18 +512,14 @@ section { position: relative; }
   border-top: 1px solid var(--panel-glass-border);
   font-size: 13.5px;
   color: var(--text);
-  line-height: 2.1;
+  line-height: 1.9;
 }
 
 .glass-price b {
-  display: inline-block;
   color: #0B5E4F;
   font-family: var(--font-display);
-  font-size: 17px;
+  font-size: 16px;
   font-weight: 700;
-  background: rgba(255, 255, 255, 0.65);
-  padding: 2px 9px;
-  border-radius: 7px;
   letter-spacing: -0.01em;
 }
 
