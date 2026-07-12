@@ -10,12 +10,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap');
 
 :root {
-  --bg: #FBF3DA;
-  --bg-soft: #F5E8C4;
-  --panel: #FFFDF4;
+  --bg: #F6D96C;
+  --bg-alt: #FFFBF0;
+  --bg-deep: #EFC950;
+  --bg-soft: #FFFBF0; /* kept for backward-compat, same as bg-alt */
+  --panel: #FFFFFF;
   --panel-glass: rgba(255, 255, 255, 0.5);
-  --panel-glass-border: rgba(255, 255, 255, 0.75);
-  --line: rgba(30, 25, 10, 0.1);
+  --panel-glass-border: rgba(255, 255, 255, 0.8);
+  --line: rgba(35, 26, 4, 0.14);
 
   --teal: #0E8C77;
   --teal-dim: #6FB8A6;
@@ -24,7 +26,7 @@
 
   --text: #221B0F;
   --text-mute: #6B6350;
-  --text-faint: #948B72;
+  --text-faint: #8C7F55;
 
   --danger: #C94A41;
 
@@ -117,7 +119,7 @@ section { position: relative; }
   position: fixed;
   top: 0; left: 0; right: 0;
   z-index: 100;
-  background: rgba(251, 243, 218, 0.78);
+  background: rgba(246, 217, 108, 0.8);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   border-bottom: 1px solid var(--line);
@@ -303,7 +305,7 @@ section { position: relative; }
 
 /* ---------------- Introduction / ledger tape ---------------- */
 
-.intro { padding: 110px 0 90px; border-top: 1px solid var(--line); }
+.intro { padding: 110px 0 90px; border-top: 1px solid var(--line); background: var(--bg-alt); }
 
 .ledger-tape {
   margin-top: 20px;
@@ -322,8 +324,8 @@ section { position: relative; }
   z-index: 2;
   pointer-events: none;
 }
-.ledger-tape::before { left: 0; background: linear-gradient(90deg, var(--bg), transparent); }
-.ledger-tape::after { right: 0; background: linear-gradient(-90deg, var(--bg), transparent); }
+.ledger-tape::before { left: 0; background: linear-gradient(90deg, var(--bg-alt), transparent); }
+.ledger-tape::after { right: 0; background: linear-gradient(-90deg, var(--bg-alt), transparent); }
 
 .ledger-track {
   display: flex;
@@ -390,9 +392,13 @@ section { position: relative; }
 /* ---------------- A.I. section — glassmorphism ---------------- */
 
 .ai-section {
-  padding: 110px 0;
+  padding: 120px 0;
   position: relative;
-  background: var(--bg-soft);
+  background:
+    radial-gradient(circle at 12% 15%, rgba(14,140,119,0.55), transparent 42%),
+    radial-gradient(circle at 88% 12%, rgba(224,140,42,0.6), transparent 46%),
+    radial-gradient(circle at 50% 95%, rgba(138,95,39,0.55), transparent 55%),
+    linear-gradient(155deg, #EFC155 0%, #E2A23F 45%, #CE7C3A 100%);
   border-top: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
   overflow: hidden;
@@ -403,9 +409,9 @@ section { position: relative; }
   position: absolute;
   width: 620px; height: 620px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(14,140,119,0.22), transparent 68%);
+  background: radial-gradient(circle, rgba(14,140,119,0.38), transparent 68%);
   top: -220px; right: -160px;
-  filter: blur(10px);
+  filter: blur(30px);
 }
 
 .ai-section::after {
@@ -413,15 +419,26 @@ section { position: relative; }
   position: absolute;
   width: 520px; height: 520px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(150,101,42,0.20), transparent 70%);
+  background: radial-gradient(circle, rgba(255,255,255,0.35), transparent 70%);
   bottom: -220px; left: -140px;
-  filter: blur(10px);
+  filter: blur(30px);
 }
 
 .ai-head {
   max-width: 640px;
   position: relative;
 }
+
+.ai-section .section-desc,
+.ai-section .glass-card p,
+.ai-section .glass-eta {
+  color: rgba(34, 24, 8, 0.72);
+}
+
+.ai-section .eyebrow {
+  color: #0B5E4F;
+}
+.ai-section .eyebrow::before { background: rgba(11, 94, 79, 0.5); }
 
 .ai-grid {
   margin-top: 56px;
@@ -434,22 +451,26 @@ section { position: relative; }
 .glass-card {
   background: var(--panel-glass);
   border: 1px solid var(--panel-glass-border);
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
+  backdrop-filter: blur(22px) saturate(140%);
+  -webkit-backdrop-filter: blur(22px) saturate(140%);
   border-radius: var(--radius-lg);
   padding: 30px 26px;
   display: flex;
   flex-direction: column;
   gap: 16px;
-  box-shadow: 0 14px 34px -22px rgba(80, 60, 20, 0.3);
+  box-shadow:
+    0 20px 44px -20px rgba(60, 40, 10, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
   transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
 }
 
 .glass-card:hover {
   transform: translateY(-6px);
-  border-color: rgba(14, 140, 119, 0.45);
-  background: rgba(255, 255, 255, 0.72);
-  box-shadow: 0 20px 40px -20px rgba(80, 60, 20, 0.35);
+  border-color: rgba(14, 140, 119, 0.5);
+  background: rgba(255, 255, 255, 0.78);
+  box-shadow:
+    0 26px 50px -18px rgba(60, 40, 10, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.95);
 }
 
 .glass-icon {
@@ -495,7 +516,7 @@ section { position: relative; }
 
 /* ---------------- Service section ---------------- */
 
-.service-section { padding: 110px 0; }
+.service-section { padding: 110px 0; background: var(--bg-alt); }
 
 .service-grid {
   margin-top: 56px;
@@ -566,11 +587,13 @@ section { position: relative; }
   padding: 100px 0;
   border-top: 1px solid var(--line);
   text-align: center;
+  background: var(--bg);
 }
 
 .exchange-teaser .panel {
-  background: linear-gradient(160deg, rgba(14,140,119,0.08), rgba(150,101,42,0.05));
-  border: 1px solid var(--line);
+  background: rgba(255, 253, 244, 0.88);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  box-shadow: 0 20px 44px -24px rgba(60, 40, 10, 0.35);
   border-radius: var(--radius-lg);
   padding: 64px 40px;
 }
@@ -583,7 +606,7 @@ section { position: relative; }
 .site-footer {
   padding: 90px 0 40px;
   border-top: 1px solid var(--line);
-  background: var(--bg-soft);
+  background: var(--bg-deep);
 }
 
 .footer-top {
@@ -594,12 +617,12 @@ section { position: relative; }
 }
 
 .footer-brand .brand { margin-bottom: 16px; }
-.footer-brand p { color: var(--text-mute); font-size: 14px; max-width: 380px; }
+.footer-brand p { color: rgba(34, 24, 8, 0.68); font-size: 14px; max-width: 380px; }
 
 .footer-info {
   margin-top: 24px;
   font-size: 13.5px;
-  color: var(--text-faint);
+  color: rgba(34, 24, 8, 0.6);
   line-height: 1.9;
 }
 
@@ -641,7 +664,7 @@ section { position: relative; }
 }
 
 .contact-card .label { font-size: 13px; color: var(--text); font-weight: 600; }
-.contact-card .sub { font-size: 11.5px; color: var(--text-faint); }
+.contact-card .sub { font-size: 11.5px; color: rgba(34, 24, 8, 0.55); }
 
 @media (max-width: 760px) {
   .footer-top { grid-template-columns: 1fr; gap: 40px; }
@@ -655,7 +678,7 @@ section { position: relative; }
   flex-wrap: wrap;
   gap: 12px;
   font-size: 12.5px;
-  color: var(--text-faint);
+  color: rgba(34, 24, 8, 0.55);
 }
 
 .footer-legal { display: flex; gap: 18px; flex-wrap: wrap; }

@@ -3,6 +3,7 @@
 .page-hero {
   padding: 150px 0 60px;
   border-bottom: 1px solid var(--line);
+  background: var(--bg);
 }
 
 .page-hero .eyebrow { margin-bottom: 18px; }
@@ -24,7 +25,7 @@
 
 .rate-note b { color: var(--teal); }
 
-.coin-section { padding: 60px 0 110px; }
+.coin-section { padding: 60px 0 110px; background: var(--bg-alt); }
 
 .coin-toolbar {
   display: flex;
