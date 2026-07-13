@@ -60,7 +60,7 @@
       <div class="btc-chart-head">
         <div>
           <div class="btc-chart-label"><span class="btc-live-dot"></span>BTC / KRW</div>
-          <div class="btc-chart-sub">실시간 시세 · 1분 간격 갱신</div>
+          <div class="btc-chart-sub">실시간 시세 · 12초 간격 갱신 (5분 구간)</div>
         </div>
         <div class="btc-chart-price-wrap">
           <div class="btc-chart-price" id="btc-current-price">불러오는 중…</div>
@@ -70,7 +70,7 @@
       <svg id="btc-chart-svg" viewBox="0 0 600 180" preserveAspectRatio="none" class="btc-chart-svg" aria-hidden="true">
         <defs>
           <filter id="btcGlow" x="-50%" y="-50%" width="200%" height="200%">
-            <feGaussianBlur stdDeviation="3.2" result="blur"/>
+            <feGaussianBlur stdDeviation="2.4" result="blur"/>
             <feMerge>
               <feMergeNode in="blur"/>
               <feMergeNode in="SourceGraphic"/>
@@ -78,10 +78,11 @@
           </filter>
         </defs>
         <g id="btc-grid"></g>
-        <path id="btc-path" fill="none" stroke="#3ddc84" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" filter="url(#btcGlow)"></path>
-        <g id="btc-dots"></g>
-        <g id="btc-labels"></g>
-        <circle id="btc-pulse-ring" r="10" fill="none" stroke="#3ddc84" stroke-width="1.4" opacity="0"></circle>
+        <line id="btc-now-line" x1="0" y1="0" x2="0" y2="180" stroke="rgba(255,255,255,0.28)" stroke-width="1" stroke-dasharray="3,4"></line>
+        <path id="btc-path" fill="none" stroke="#EDF0F6" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"></path>
+        <circle id="btc-dot" r="3.2" fill="#EDF0F6" filter="url(#btcGlow)"></circle>
+        <circle id="btc-pulse-ring" r="10" fill="none" stroke="#EDF0F6" stroke-width="1.2" opacity="0"></circle>
+        <g id="btc-price-tag"></g>
       </svg>
     </div>
   </div>
