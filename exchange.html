@@ -53,6 +53,41 @@
   </div>
 </header>
 
+<!-- ============================================================ BTC LIVE CHART ============================================================ -->
+<section class="btc-chart-section">
+  <div class="wrap">
+    <div class="btc-chart-card">
+      <div class="btc-chart-bg" aria-hidden="true"></div>
+      <div class="btc-chart-head">
+        <div>
+          <div class="btc-chart-label"><span class="btc-live-dot"></span>BTC / KRW</div>
+          <div class="btc-chart-sub">실시간 시세 · 1분 간격 갱신</div>
+        </div>
+        <div class="btc-chart-price-wrap">
+          <div class="btc-chart-price" id="btc-current-price">불러오는 중…</div>
+          <div class="btc-chart-delta" id="btc-current-delta"></div>
+        </div>
+      </div>
+      <svg id="btc-chart-svg" viewBox="0 0 600 180" preserveAspectRatio="none" class="btc-chart-svg" aria-hidden="true">
+        <defs>
+          <filter id="btcGlow" x="-50%" y="-50%" width="200%" height="200%">
+            <feGaussianBlur stdDeviation="3.2" result="blur"/>
+            <feMerge>
+              <feMergeNode in="blur"/>
+              <feMergeNode in="SourceGraphic"/>
+            </feMerge>
+          </filter>
+        </defs>
+        <g id="btc-grid"></g>
+        <path id="btc-path" fill="none" stroke="#3ddc84" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" filter="url(#btcGlow)"></path>
+        <g id="btc-labels"></g>
+        <circle id="btc-pulse-ring" r="10" fill="none" stroke="#3ddc84" stroke-width="1.4" opacity="0"></circle>
+        <circle id="btc-dot" r="4" fill="#3ddc84" filter="url(#btcGlow)"></circle>
+      </svg>
+    </div>
+  </div>
+</section>
+
 <section class="coin-section">
   <div class="wrap">
     <div class="coin-toolbar">
@@ -150,5 +185,6 @@
 <script src="js/supabase-config.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
 <script src="js/exchange.js" defer></script>
+<script src="js/btc-chart.js" defer></script>
 </body>
 </html>
