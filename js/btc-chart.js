@@ -22,7 +22,7 @@
   const PAD_Y = 28;
 
   const pathEl = document.getElementById('btc-path');
-  const dotEl = document.getElementById('btc-dot');
+  const dotsEl = document.getElementById('btc-dots');
   const ringEl = document.getElementById('btc-pulse-ring');
   const gridEl = document.getElementById('btc-grid');
   const labelsEl = document.getElementById('btc-labels');
@@ -106,10 +106,18 @@
     }
 
     const newest = pts[pts.length - 1];
-    dotEl.setAttribute('cx', newest.x);
-    dotEl.setAttribute('cy', newest.y);
 
-    // 심장박동처럼 퍼지는 펄스 링
+    // 5분 이내 모든 점을 표시 (오래된 점은 작고 흐리게, 최신 점은 크고 밝게)
+    dotsEl.innerHTML = pts
+      .map((p, i) => {
+        const isNewest = i === pts.length - 1;
+        const r = isNewest ? 4.5 : 3;
+        const opacity = isNewest ? 1 : 0.55 + (i / Math.max(1, pts.length - 1)) * 0.35;
+        return `<circle cx="${p.x}" cy="${p.y}" r="${r}" fill="#3ddc84" opacity="${opacity.toFixed(2)}" ${isNewest ? 'filter="url(#btcGlow)"' : ''}></circle>`;
+      })
+      .join('');
+
+    // 심장박동처럼 퍼지는 펄스 링 (최신 점 위치)
     const pulseT = Math.min(1, (now - pulseStart) / 1400);
     ringEl.setAttribute('cx', newest.x);
     ringEl.setAttribute('cy', newest.y);

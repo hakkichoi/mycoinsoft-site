@@ -57,7 +57,6 @@
 <section class="btc-chart-section">
   <div class="wrap">
     <div class="btc-chart-card">
-      <div class="btc-chart-bg" aria-hidden="true"></div>
       <div class="btc-chart-head">
         <div>
           <div class="btc-chart-label"><span class="btc-live-dot"></span>BTC / KRW</div>
@@ -80,9 +79,9 @@
         </defs>
         <g id="btc-grid"></g>
         <path id="btc-path" fill="none" stroke="#3ddc84" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" filter="url(#btcGlow)"></path>
+        <g id="btc-dots"></g>
         <g id="btc-labels"></g>
         <circle id="btc-pulse-ring" r="10" fill="none" stroke="#3ddc84" stroke-width="1.4" opacity="0"></circle>
-        <circle id="btc-dot" r="4" fill="#3ddc84" filter="url(#btcGlow)"></circle>
       </svg>
     </div>
   </div>
@@ -184,6 +183,7 @@
 
 <script src="js/supabase-config.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
+<script src="js/main.js" defer></script>
 <script src="js/exchange.js" defer></script>
 <script src="js/btc-chart.js" defer></script>
 </body>
