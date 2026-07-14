@@ -1,0 +1,50 @@
+/* ---------------- Shared form elements (used by admin.html) ---------------- */
+
+.form-row { margin-bottom: 16px; }
+.form-row label {
+  display: block;
+  font-size: 13px;
+  color: var(--text-mute);
+  margin-bottom: 7px;
+}
+.form-row .hint { font-size: 12px; color: var(--gold); margin-top: 6px; }
+
+.form-row input, .form-row select, .form-row textarea {
+  width: 100%;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+  color: var(--text);
+  font-size: 14px;
+  font-family: inherit;
+}
+.form-row input:focus, .form-row select:focus, .form-row textarea:focus {
+  border-color: var(--teal-dim);
+}
+
+.form-row textarea { min-height: 80px; resize: vertical; }
+
+.form-two { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+
+.modal-submit {
+  width: 100%;
+  padding: 14px;
+  border-radius: 100px;
+  background: var(--teal);
+  color: #FBF3DA;
+  font-weight: 700;
+  font-size: 15px;
+  border: none;
+  margin-top: 6px;
+}
+.modal-submit:hover { filter: brightness(1.06); }
+.modal-submit:disabled { opacity: 0.55; cursor: default; }
+
+.form-status {
+  margin-top: 14px;
+  font-size: 13.5px;
+  text-align: center;
+}
+.form-status.ok { color: var(--teal); }
+.form-status.err { color: var(--danger); }
