@@ -7,8 +7,8 @@
       필요한 테이블이 모두 생성됩니다.
 ============================================================ */
 
-const SUPABASE_URL = 'https://YOUR-PROJECT-REF.supabase.co';
-const SUPABASE_ANON_KEY = 'YOUR-ANON-PUBLIC-KEY';
+const SUPABASE_URL = 'https://mbujojcktnbvcpewfwqd.supabase.co';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1idWpvamNrdG5idmNwZXdmd3FkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODQwMDExNDMsImV4cCI6MjA5OTU3NzE0M30.6Ox3LYQCZGZjF7rSQlyZytq9YU8OK2IeoAgomOVyazc';
 
 // 코인 교환 신청 알림을 받을 관리자 이메일 (FormSubmit 사용)
 // 최초 1회, 실제 폼 제출을 한 번 해서 해당 이메일로 온 확인 메일에서
