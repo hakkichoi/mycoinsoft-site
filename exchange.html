@@ -60,30 +60,27 @@
       <div class="btc-chart-head">
         <div>
           <div class="btc-chart-label"><span class="btc-live-dot"></span>BTC / KRW</div>
-          <div class="btc-chart-sub">실시간 시세 · 12초 간격 갱신 (5분 구간)</div>
+          <div class="btc-chart-sub">실시간 시세</div>
         </div>
         <div class="btc-chart-price-wrap">
           <div class="btc-chart-price" id="btc-current-price">불러오는 중…</div>
-          <div class="btc-chart-delta" id="btc-current-delta"></div>
+          <div class="btc-chart-delta" id="btc-current-delta">-</div>
         </div>
       </div>
       <svg id="btc-chart-svg" viewBox="0 0 600 180" preserveAspectRatio="none" class="btc-chart-svg" aria-hidden="true">
         <defs>
-          <filter id="btcGlow" x="-50%" y="-50%" width="200%" height="200%">
-            <feGaussianBlur stdDeviation="2.4" result="blur"/>
-            <feMerge>
-              <feMergeNode in="blur"/>
-              <feMergeNode in="SourceGraphic"/>
-            </feMerge>
-          </filter>
+          <linearGradient id="btcAreaFill" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#0E8C77" stop-opacity="0.28"/>
+            <stop offset="100%" stop-color="#0E8C77" stop-opacity="0"/>
+          </linearGradient>
         </defs>
         <g id="btc-grid"></g>
-        <line id="btc-now-line" x1="0" y1="0" x2="0" y2="180" stroke="rgba(255,255,255,0.28)" stroke-width="1" stroke-dasharray="3,4"></line>
-        <path id="btc-path" fill="none" stroke="#EDF0F6" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"></path>
-        <circle id="btc-dot" r="3.2" fill="#EDF0F6" filter="url(#btcGlow)"></circle>
-        <circle id="btc-pulse-ring" r="10" fill="none" stroke="#EDF0F6" stroke-width="1.2" opacity="0"></circle>
-        <g id="btc-price-tag"></g>
+        <path id="btc-area" fill="url(#btcAreaFill)" stroke="none"></path>
+        <path id="btc-path" fill="none" stroke="#0E8C77" stroke-width="2.25" stroke-linejoin="round" stroke-linecap="round"></path>
+        <circle id="btc-pulse-ring" r="9" fill="none" stroke="#0E8C77" stroke-width="1.4" opacity="0"></circle>
+        <circle id="btc-dot" r="3.6" fill="#0E8C77" stroke="#FFFDF4" stroke-width="1.5"></circle>
       </svg>
+      <div class="btc-chart-foot" id="btc-chart-foot">최근 30분 · CoinGecko 실시간 시세</div>
     </div>
   </div>
 </section>
@@ -106,12 +103,43 @@
 
 </main>
 
-<footer class="site-footer">
+<footer class="site-footer" id="footer-company">
   <div class="wrap">
-    <div class="footer-bottom" style="border-top:none; padding-top:0;">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="index.html" class="brand">MYCOINSOFT<span class="dot">.</span></a>
+        <p>블록체인 전문 서비스의 시작과 끝을 함께 합니다. 코인 제작부터 백서, 홈페이지, 거래소 상장까지 — 마이코인소프트가 A.I와 함께 지원합니다.</p>
+        <div class="footer-info">
+          운영사 : KMC FOUNDATION / (주)케이엠씨파운데이션<br>
+          대표 : 최학기<br>
+          사업자등록번호 : 468-87-01792
+        </div>
+      </div>
+
+      <div>
+        <div class="eyebrow">Channel</div>
+        <div class="contact-buttons">
+          <a class="contact-btn kakao" href="https://open.kakao.com/o/sigw89xd" target="_blank" rel="noopener">카톡상담 바로가기</a>
+          <a class="contact-btn telegram" href="https://t.me/choihakki" target="_blank" rel="noopener">텔레그램 상담하기</a>
+        </div>
+
+        <div class="newsletter-block">
+          <div class="eyebrow">Newsletter</div>
+          <p class="newsletter-desc">이메일을 등록하시면 새로운 소식과 이벤트 정보를 받아보실 수 있습니다.</p>
+          <form id="newsletter-form" class="newsletter-form">
+            <input type="email" id="newsletter-email" name="email" placeholder="이메일 주소" required>
+            <button type="submit">구독하기</button>
+          </form>
+          <div class="newsletter-status" id="newsletter-status"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
       <span>© 2026 MYCOINSOFT. All rights reserved.</span>
       <div class="footer-legal">
-        <a href="index.html">홈으로</a>
+        <a href="exchange.html">코인교환</a>
+        <span>www.mycoinsoft.com</span>
       </div>
     </div>
   </div>
@@ -187,5 +215,6 @@
 <script src="js/main.js" defer></script>
 <script src="js/exchange.js" defer></script>
 <script src="js/btc-chart.js" defer></script>
+<script src="js/newsletter.js" defer></script>
 </body>
 </html>

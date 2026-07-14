@@ -318,22 +318,19 @@
 
       <div>
         <div class="eyebrow">Channel</div>
-        <div class="contact-cards">
-          <a class="contact-card" href="https://t.me/choihakki" target="_blank" rel="noopener">
-            <img class="qr" src="assets/telegram-qr.png" alt="텔레그램 QR 코드">
-            <div class="label">텔레그램</div>
-            <div class="sub">t.me/choihakki</div>
-          </a>
-          <a class="contact-card" href="#" target="_blank" rel="noopener">
-            <div class="icon-circle" style="background:#FFE066;color:#3A2E0B;">K</div>
-            <div class="label">카카오톡</div>
-            <div class="sub">채널 링크 등록 예정</div>
-          </a>
-          <a class="contact-card" href="#" target="_blank" rel="noopener">
-            <div class="icon-circle" style="background:rgba(14,140,119,0.14);color:var(--teal);">W</div>
-            <div class="label">위챗</div>
-            <div class="sub">WeChat ID 등록 예정</div>
-          </a>
+        <div class="contact-buttons">
+          <a class="contact-btn kakao" href="https://open.kakao.com/o/sigw89xd" target="_blank" rel="noopener">카톡상담 바로가기</a>
+          <a class="contact-btn telegram" href="https://t.me/choihakki" target="_blank" rel="noopener">텔레그램 상담하기</a>
+        </div>
+
+        <div class="newsletter-block">
+          <div class="eyebrow">Newsletter</div>
+          <p class="newsletter-desc">이메일을 등록하시면 새로운 소식과 이벤트 정보를 받아보실 수 있습니다.</p>
+          <form id="newsletter-form" class="newsletter-form">
+            <input type="email" id="newsletter-email" name="email" placeholder="이메일 주소" required>
+            <button type="submit">구독하기</button>
+          </form>
+          <div class="newsletter-status" id="newsletter-status"></div>
         </div>
       </div>
     </div>
@@ -352,5 +349,6 @@
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
 <script src="js/main.js" defer></script>
 <script src="js/contact.js" defer></script>
+<script src="js/newsletter.js" defer></script>
 </body>
 </html>

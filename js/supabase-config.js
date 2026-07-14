@@ -15,6 +15,10 @@ const SUPABASE_ANON_KEY = 'YOUR-ANON-PUBLIC-KEY';
 // 활성화 링크를 눌러야 정상적으로 이메일이 전달됩니다. (formsubmit.co 안내 참고)
 const ADMIN_NOTIFY_EMAIL = 'choihakki@gmail.com';
 
+// 뉴스레터 구독 폼 — Google 설문지에 연결 (README 안내에 따라 값을 채워주세요)
+const NEWSLETTER_FORM_ACTION = 'https://docs.google.com/forms/d/e/REPLACE_WITH_YOUR_FORM_ID/formResponse';
+const NEWSLETTER_EMAIL_ENTRY = 'entry.REPLACE_WITH_ENTRY_ID';
+
 let _supabaseClient = null;
 function getSupabase() {
   if (_supabaseClient) return _supabaseClient;

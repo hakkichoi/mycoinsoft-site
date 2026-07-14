@@ -1,88 +1,89 @@
 /* ---------------- BTC live chart ---------------- */
 
-.btc-chart-section { padding: 36px 0 0; }
+.btc-chart-section { padding: 40px 0 0; }
 
 .btc-chart-card {
   position: relative;
-  background: #171B26;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: var(--panel);
+  border: 1px solid var(--line);
   border-radius: var(--radius-lg);
-  padding: 26px 28px 18px;
-  overflow: hidden;
-  box-shadow: 0 24px 50px -28px rgba(0, 0, 0, 0.55);
+  padding: 30px 32px 24px;
+  box-shadow: 0 22px 46px -30px rgba(60, 40, 10, 0.35);
 }
 
 .btc-chart-head {
-  position: relative;
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
   gap: 16px;
-  margin-bottom: 6px;
+  margin-bottom: 18px;
 }
 
 .btc-chart-label {
   font-family: var(--font-display);
-  font-size: 14.5px;
+  font-size: 12.5px;
   font-weight: 700;
-  letter-spacing: 0.05em;
-  color: #EDF0F6;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-mute);
   display: flex;
   align-items: center;
   gap: 8px;
 }
 
 .btc-live-dot {
-  width: 7px; height: 7px;
+  width: 6px; height: 6px;
   border-radius: 50%;
-  background: #3ddc84;
-  box-shadow: 0 0 8px 1px rgba(61, 220, 132, 0.8);
-  animation: btc-live-blink 1.6s ease-in-out infinite;
+  background: var(--teal);
+  box-shadow: 0 0 6px 1px rgba(14, 140, 119, 0.5);
+  animation: btc-live-blink 1.8s ease-in-out infinite;
 }
 
 @keyframes btc-live-blink {
   0%, 100% { opacity: 1; }
-  50% { opacity: 0.35; }
+  50% { opacity: 0.3; }
 }
 
 .btc-chart-sub {
-  font-size: 11.5px;
-  color: rgba(255, 255, 255, 0.35);
-  margin-top: 4px;
+  font-size: 12px;
+  color: var(--text-faint);
+  margin-top: 6px;
 }
 
 .btc-chart-price-wrap { text-align: right; }
 
 .btc-chart-price {
   font-family: var(--font-display);
-  font-size: 21px;
+  font-size: 27px;
   font-weight: 700;
-  color: #EDF0F6;
+  color: var(--text);
+  letter-spacing: -0.01em;
 }
 
 .btc-chart-delta {
+  display: inline-block;
+  margin-top: 6px;
   font-size: 12px;
-  margin-top: 2px;
-  color: rgba(255, 255, 255, 0.4);
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 100px;
+  background: rgba(140, 147, 166, 0.14);
+  color: var(--text-mute);
 }
-.btc-chart-delta.up { color: #3ddc84; }
-.btc-chart-delta.down { color: #E4665C; }
+.btc-chart-delta.up { background: rgba(14, 140, 119, 0.12); color: var(--teal); }
+.btc-chart-delta.down { background: rgba(201, 74, 65, 0.1); color: var(--danger); }
 
 .btc-chart-svg {
-  position: relative;
   width: 100%;
-  height: 170px;
+  height: 180px;
   display: block;
 }
 
-.btc-price-tag-box {
-  fill: #EDF0F6;
-}
-.btc-price-tag-text {
-  font-family: var(--font-display);
-  font-size: 10.5px;
-  font-weight: 700;
-  fill: #171B26;
+.btc-chart-foot {
+  margin-top: 10px;
+  font-size: 11.5px;
+  color: var(--text-faint);
+  text-align: right;
 }
 
 @media (max-width: 640px) {
