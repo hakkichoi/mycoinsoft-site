@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DEMO COIN — 코인 홈페이지 샘플 | 마이코인소프트</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="css/demo-theme.css">
+</head>
+<body>
+
+<div class="demo-notice">
+  이 페이지는 <b>마이코인소프트</b>가 제작하는 코인 홈페이지 샘플(DEMO)입니다. 실제 자산이 아닌 가상 데이터로 동작합니다.
+</div>
+
+<!-- ============================================================ NAV (본 사이트와 동일) ============================================================ -->
+<nav class="site-nav">
+  <div class="wrap">
+    <a href="../index.html" class="brand">MYCOINSOFT<span class="dot">.</span></a>
+    <ul class="nav-links">
+      <li><a href="../index.html#hero">홈</a></li>
+      <li><a href="../index.html#intro">소개</a></li>
+      <li><a href="../index.html#ai">A.I 서비스</a></li>
+      <li><a href="../index.html#service">서비스안내</a></li>
+      <li><a href="../index.html#contact">문의하기</a></li>
+      <li><a href="../index.html#footer-company">회사정보</a></li>
+    </ul>
+    <button class="nav-toggle" aria-label="메뉴 열기">☰</button>
+  </div>
+</nav>
+
+<main class="demo-app">
+
+  <!-- ============================================================ DEMO HERO (AI Crypto Landing Page 컨셉) ============================================================ -->
+  <header class="demo-hero">
+    <div class="demo-wrap">
+      <div class="demo-eyebrow">◆ AI-Powered Crypto Sample</div>
+      <h1>당신의 코인,<br><span class="grad">DEMO COIN</span>으로 미리 만나보세요</h1>
+      <p>마이코인소프트가 제작하는 코인 홈페이지가 실제로 어떻게 동작하는지 지금 바로 가입하고 체험해보세요. 지갑, 입출금, 추천인 시스템까지 실제 데이터로 작동합니다.</p>
+      <div class="demo-stats">
+        <div class="demo-stat-pill"><b id="stat-total-users">-</b>체험 중인 회원</div>
+        <div class="demo-stat-pill"><b>₩1,000,000</b>가입 즉시 지급</div>
+        <div class="demo-stat-pill"><b>100%</b>무료 체험</div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============================================================ AUTH / DASHBOARD ============================================================ -->
+  <section class="demo-section">
+    <div class="demo-wrap">
+
+      <!-- 로그인 전 -->
+      <div id="auth-section" class="demo-card">
+        <div class="demo-tabs">
+          <button id="tab-signup-btn" class="active">회원가입</button>
+          <button id="tab-login-btn">로그인</button>
+        </div>
+
+        <div id="signup-panel" class="demo-panel active">
+          <form id="signup-form">
+            <div class="demo-row">
+              <label for="su-username">아이디 (닉네임)</label>
+              <input type="text" id="su-username" required maxlength="20" placeholder="예: hakki_demo">
+            </div>
+            <div class="demo-row">
+              <label for="su-ref">추천인 코드 (선택)</label>
+              <input type="text" id="su-ref" maxlength="12" placeholder="추천인이 있다면 입력">
+            </div>
+            <button type="submit" class="demo-btn demo-btn-primary">가입하고 100만원 데모 자산 받기</button>
+          </form>
+          <div class="demo-msg" id="signup-msg"></div>
+          <p class="demo-caution">이 페이지는 데모입니다. 실명, 실제 이메일 등 개인정보를 입력하지 마세요.</p>
+        </div>
+
+        <div id="login-panel" class="demo-panel">
+          <form id="login-form">
+            <div class="demo-row">
+              <label for="li-username">아이디</label>
+              <input type="text" id="li-username" required maxlength="20">
+            </div>
+            <div class="demo-row">
+              <label for="li-pin">PIN (4자리)</label>
+              <input type="text" id="li-pin" required maxlength="4" inputmode="numeric" placeholder="가입 시 발급된 PIN">
+            </div>
+            <button type="submit" class="demo-btn demo-btn-primary">로그인</button>
+          </form>
+          <div class="demo-msg" id="login-msg"></div>
+        </div>
+      </div>
+
+      <!-- 로그인 후 대시보드 -->
+      <div id="dash-section" style="display:none;">
+        <div class="demo-card demo-balance">
+          <div class="amt" id="dash-balance">₩0</div>
+          <div class="lbl">내 데모 지갑 잔액 · <b id="dash-username"></b> 님</div>
+          <div class="demo-ref-box">
+            <span>내 추천 코드: <code id="dash-refcode">-</code></span>
+            <button class="demo-btn demo-btn-ghost demo-btn-sm" id="copy-ref-btn">복사</button>
+          </div>
+        </div>
+
+        <div class="demo-card" style="margin-top:16px;">
+          <div class="demo-section-title" style="text-align:left;">입출금 신청</div>
+          <form id="tx-form">
+            <div class="demo-row">
+              <label for="tx-type">종류</label>
+              <select id="tx-type">
+                <option value="deposit">입금 신청</option>
+                <option value="withdraw">출금 신청</option>
+              </select>
+            </div>
+            <div class="demo-row">
+              <label for="tx-amount">금액 (원)</label>
+              <input type="number" id="tx-amount" min="1000" step="1000" required placeholder="예: 50000">
+            </div>
+            <button type="submit" class="demo-btn demo-btn-primary">신청하기</button>
+          </form>
+          <div class="demo-msg" id="tx-msg"></div>
+
+          <table class="demo-tx-table" id="tx-table">
+            <thead><tr><th>일시</th><th>종류</th><th>금액</th><th>상태</th></tr></thead>
+            <tbody><tr><td colspan="4">신청 내역이 없습니다.</td></tr></tbody>
+          </table>
+        </div>
+
+        <div class="demo-card demo-actions-row" style="margin-top:16px;">
+          <button class="demo-btn demo-btn-ghost" id="logout-btn">로그아웃</button>
+          <button class="demo-btn demo-btn-danger" id="reset-btn">내 데모 초기화</button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============================================================ 공지사항 ============================================================ -->
+  <section class="demo-section">
+    <div class="demo-wrap">
+      <div class="demo-section-title">공지사항</div>
+      <div class="demo-card" id="notice-list">
+        <div class="demo-notice-item">불러오는 중...</div>
+      </div>
+      <div class="demo-admin-link">이 데모의 관리자 화면도 공개되어 있습니다 — <a href="../admin01/">admin01 바로가기 →</a></div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============================================================ FOOTER (본 사이트와 동일) ============================================================ -->
+<footer class="site-footer" id="footer-company">
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="../index.html" class="brand">MYCOINSOFT<span class="dot">.</span></a>
+        <p>블록체인 전문 서비스의 시작과 끝을 함께 합니다. 코인 제작부터 백서, 홈페이지, 거래소 상장까지 — 마이코인소프트가 A.I와 함께 지원합니다.</p>
+        <div class="footer-info">
+          운영사 : KMC FOUNDATION / (주)케이엠씨파운데이션<br>
+          정보보안담당 : 최학기<br>
+          사업자등록번호 : 468-87-01792
+        </div>
+      </div>
+
+      <div>
+        <div class="eyebrow">Channel</div>
+        <div class="contact-buttons">
+          <a class="contact-btn kakao" href="https://open.kakao.com/o/sigw89xd" target="_blank" rel="noopener">카톡상담 바로가기</a>
+          <a class="contact-btn telegram" href="https://telegram.me/choihakki" target="_blank" rel="noopener">텔레그램 상담하기</a>
+        </div>
+
+        <div class="newsletter-block">
+          <div class="eyebrow">Newsletter</div>
+          <p class="newsletter-desc">이메일을 등록하시면 새로운 소식과 이벤트 정보를 받아보실 수 있습니다.</p>
+          <form id="newsletter-form" class="newsletter-form">
+            <input type="email" id="newsletter-email" name="email" placeholder="이메일 주소" required>
+            <button type="submit">구독하기</button>
+          </form>
+          <div class="newsletter-status" id="newsletter-status"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>© 2026 MYCOINSOFT. All rights reserved.</span>
+      <div class="footer-legal">
+        <span>www.mycoinsoft.com</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="../js/supabase-config.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
+<script src="../js/main.js" defer></script>
+<script src="../js/newsletter.js" defer></script>
+<script src="js/app.js" defer></script>
+</body>
+</html>
