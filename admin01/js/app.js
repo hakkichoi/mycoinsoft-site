@@ -1,5 +1,8 @@
 const sb = getSupabase();
 
+const ADMIN_USERNAME = 'admin_user_1';
+const ADMIN_PASSWORD = 'admin1234';
+
 function showToast(msg) {
   const toast = document.getElementById('toast');
   toast.textContent = msg;
@@ -8,6 +11,45 @@ function showToast(msg) {
 }
 
 const fmtWon = (n) => '₩' + Math.round(n).toLocaleString('ko-KR');
+
+// ---------------- Password show/hide ----------------
+document.getElementById('admin-pw-toggle').addEventListener('click', () => {
+  const input = document.getElementById('admin-li-pw');
+  const btn = document.getElementById('admin-pw-toggle');
+  if (input.type === 'password') {
+    input.type = 'text';
+    btn.textContent = '🙈';
+  } else {
+    input.type = 'password';
+    btn.textContent = '👁';
+  }
+});
+
+// ---------------- Login gate (데모 전용 — 실제 서버 인증이 아닌 화면 예시용) ----------------
+const loginSection = document.getElementById('admin-login-section');
+const dashSection = document.getElementById('admin-dashboard-section');
+
+document.getElementById('admin-login-form').addEventListener('submit', (e) => {
+  e.preventDefault();
+  const username = document.getElementById('admin-li-username').value.trim();
+  const password = document.getElementById('admin-li-pw').value.trim();
+  const msg = document.getElementById('admin-login-msg');
+
+  if (username === ADMIN_USERNAME && password === ADMIN_PASSWORD) {
+    loginSection.style.display = 'none';
+    dashSection.style.display = 'block';
+    document.getElementById('admin-who').textContent = username;
+    initDashboard();
+  } else {
+    msg.textContent = '아이디 또는 비밀번호가 일치하지 않습니다.';
+    msg.className = 'demo-msg err';
+  }
+});
+
+document.getElementById('admin-logout-btn').addEventListener('click', () => {
+  dashSection.style.display = 'none';
+  loginSection.style.display = 'flex';
+});
 
 // ---------------- Tabs ----------------
 document.querySelectorAll('.admin-tabs button').forEach((btn) => {
@@ -118,7 +160,7 @@ async function loadTransactions() {
       <td>${t.demo_users ? t.demo_users.username : '(삭제된 회원)'}</td>
       <td>${typeLabel[t.type]}</td>
       <td>${fmtWon(t.amount)}</td>
-      <td><span class="badge ${t.status}">${statusLabel[t.status]}</span></td>
+      <td><span class="demo-badge ${t.status}">${statusLabel[t.status]}</span></td>
       <td class="row-actions">${actions}</td>
     </tr>`;
     })
@@ -209,14 +251,21 @@ document.getElementById('reset-all-btn').addEventListener('click', async () => {
   await sb.from('demo_transactions').delete().neq('id', 0);
   await sb.from('demo_users').delete().neq('id', '00000000-0000-0000-0000-000000000000');
 
-  showToast('전체 초기화되었습니다.');
+  // 고정 데모 로그인 계정(user_1)은 항상 살아있어야 하므로 다시 생성
+  await sb.from('demo_users').insert([
+    { username: 'user_1', pin: '1234', wallet_balance: 1000000, referral_code: 'DEMO01' },
+  ]);
+
+  showToast('전체 초기화되었습니다. (기본 데모 계정 user_1은 유지됩니다)');
   loadUsers();
   loadTransactions();
   loadStats();
 });
 
-// ---------------- Init ----------------
-loadStats();
-loadUsers();
-loadTransactions();
-loadNoticesAdmin();
+// ---------------- Init (로그인 이후에만 실행) ----------------
+function initDashboard() {
+  loadStats();
+  loadUsers();
+  loadTransactions();
+  loadNoticesAdmin();
+}

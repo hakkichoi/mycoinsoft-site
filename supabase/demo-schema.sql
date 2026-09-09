@@ -8,7 +8,7 @@
 create table if not exists demo_users (
   id uuid primary key default gen_random_uuid(),
   username text not null unique,
-  pin text not null,                 -- 4자리 데모 로그인 PIN (실제 비밀번호 아님)
+  pin text not null,                 -- 데모 로그인 비밀번호 (실제 비밀번호 보호 아님)
   wallet_balance numeric not null default 1000000,   -- 데모 지급금 (가상 원화)
   referral_code text not null unique,
   referred_by text references demo_users(referral_code),
@@ -47,6 +47,14 @@ alter table demo_notices enable row level security;
 create policy "public all demo_users" on demo_users for all using (true) with check (true);
 create policy "public all demo_transactions" on demo_transactions for all using (true) with check (true);
 create policy "public all demo_notices" on demo_notices for all using (true) with check (true);
+
+-- ============================================================
+-- 고정 데모 로그인 계정 (landing01에 이미 입력되어 있는 계정)
+-- 아이디: user_1 / 비밀번호: 1234
+-- ============================================================
+insert into demo_users (username, pin, wallet_balance, referral_code)
+values ('user_1', '1234', 1000000, 'DEMO01')
+on conflict (username) do nothing;
 
 -- ============================================================
 -- 샘플 공지 데이터

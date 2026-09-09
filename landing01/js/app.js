@@ -2,38 +2,22 @@
   const sb = getSupabase();
   const SESSION_KEY = 'demo01_user_id';
 
-  // ---------------- Tabs ----------------
-  const tabSignupBtn = document.getElementById('tab-signup-btn');
-  const tabLoginBtn = document.getElementById('tab-login-btn');
-  const signupPanel = document.getElementById('signup-panel');
-  const loginPanel = document.getElementById('login-panel');
-
-  tabSignupBtn.addEventListener('click', () => {
-    tabSignupBtn.classList.add('active');
-    tabLoginBtn.classList.remove('active');
-    signupPanel.classList.add('active');
-    loginPanel.classList.remove('active');
-  });
-  tabLoginBtn.addEventListener('click', () => {
-    tabLoginBtn.classList.add('active');
-    tabSignupBtn.classList.remove('active');
-    loginPanel.classList.add('active');
-    signupPanel.classList.remove('active');
-  });
-
   const authSection = document.getElementById('auth-section');
   const dashSection = document.getElementById('dash-section');
-
-  function randomCode(len) {
-    const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
-    let out = '';
-    for (let i = 0; i < len; i++) out += chars[Math.floor(Math.random() * chars.length)];
-    return out;
-  }
-  function randomPin() {
-    return String(Math.floor(1000 + Math.random() * 9000));
-  }
   const fmtWon = (n) => '₩' + Math.round(n).toLocaleString('ko-KR');
+
+  // ---------------- Password show/hide ----------------
+  document.getElementById('pw-toggle').addEventListener('click', () => {
+    const input = document.getElementById('li-pin');
+    const btn = document.getElementById('pw-toggle');
+    if (input.type === 'password') {
+      input.type = 'text';
+      btn.textContent = '🙈';
+    } else {
+      input.type = 'password';
+      btn.textContent = '👁';
+    }
+  });
 
   // ---------------- Stat: total demo users ----------------
   async function loadStat() {
@@ -41,62 +25,6 @@
     const el = document.getElementById('stat-total-users');
     if (el) el.textContent = count != null ? count.toLocaleString('ko-KR') : '0';
   }
-
-  // ---------------- Signup ----------------
-  const signupForm = document.getElementById('signup-form');
-  const signupMsg = document.getElementById('signup-msg');
-
-  signupForm.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    signupMsg.textContent = '';
-    signupMsg.className = 'demo-msg';
-
-    const username = document.getElementById('su-username').value.trim();
-    const refInput = document.getElementById('su-ref').value.trim().toUpperCase();
-
-    if (!username) return;
-
-    const { data: existing } = await sb.from('demo_users').select('id').eq('username', username).maybeSingle();
-    if (existing) {
-      signupMsg.textContent = '이미 사용 중인 아이디입니다.';
-      signupMsg.className = 'demo-msg err';
-      return;
-    }
-
-    let referredBy = null;
-    if (refInput) {
-      const { data: refUser } = await sb.from('demo_users').select('referral_code').eq('referral_code', refInput).maybeSingle();
-      if (refUser) referredBy = refUser.referral_code;
-    }
-
-    const pin = randomPin();
-    const referralCode = randomCode(6);
-
-    const payload = {
-      username,
-      pin,
-      wallet_balance: 1000000,
-      referral_code: referralCode,
-      referred_by: referredBy,
-    };
-
-    const { data, error } = await sb.from('demo_users').insert([payload]).select().single();
-    if (error) {
-      console.error(error);
-      signupMsg.textContent = '가입 중 오류가 발생했습니다. 다시 시도해주세요.';
-      signupMsg.className = 'demo-msg err';
-      return;
-    }
-
-    signupMsg.innerHTML = '';
-    const pinBox = document.createElement('div');
-    pinBox.className = 'demo-pin-reveal';
-    pinBox.innerHTML = `<div class="pin">${pin}</div><p>이 PIN으로 다시 로그인합니다. 잊지 않게 기억해두세요 (데모용이라 별도 찾기 기능은 없습니다).</p>`;
-    signupMsg.appendChild(pinBox);
-
-    localStorage.setItem(SESSION_KEY, data.id);
-    setTimeout(() => { loadDashboard(); loadStat(); }, 1400);
-  });
 
   // ---------------- Login ----------------
   const loginForm = document.getElementById('login-form');
@@ -112,7 +40,7 @@
 
     const { data, error } = await sb.from('demo_users').select('id').eq('username', username).eq('pin', pin).maybeSingle();
     if (error || !data) {
-      loginMsg.textContent = '아이디 또는 PIN이 일치하지 않습니다.';
+      loginMsg.textContent = '아이디 또는 비밀번호가 일치하지 않습니다.';
       loginMsg.className = 'demo-msg err';
       return;
     }
@@ -251,16 +179,8 @@
       .join('');
   }
 
-  // ---------------- Referral code from URL ----------------
-  function prefillReferral() {
-    const params = new URLSearchParams(location.search);
-    const ref = params.get('ref');
-    if (ref) document.getElementById('su-ref').value = ref.toUpperCase();
-  }
-
   // ---------------- Init ----------------
   document.addEventListener('DOMContentLoaded', () => {
-    prefillReferral();
     loadNotices();
     loadStat();
     if (localStorage.getItem(SESSION_KEY)) {
