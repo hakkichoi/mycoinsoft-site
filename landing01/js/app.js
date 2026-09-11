@@ -89,6 +89,18 @@
     loadExchangeHistory(userId);
   }
 
+  function fmtDate(iso) {
+    const d = new Date(iso);
+    const mm = d.getMonth() + 1;
+    const dd = d.getDate();
+    let h = d.getHours();
+    const ampm = h < 12 ? '오전' : '오후';
+    h = h % 12;
+    if (h === 0) h = 12;
+    const min = String(d.getMinutes()).padStart(2, '0');
+    return `${mm}/${dd} ${ampm} ${h}:${min}`;
+  }
+
   async function loadExchangeHistory(userId) {
     const { data, error } = await sb
       .from('demo_exchange_requests')
@@ -96,25 +108,28 @@
       .eq('user_id', userId)
       .order('created_at', { ascending: false });
 
-    const tbody = document.querySelector('#tx-table tbody');
+    const list = document.getElementById('tx-list');
     if (error || !data || data.length === 0) {
-      tbody.innerHTML = '<tr><td colspan="5">신청 내역이 없습니다.</td></tr>';
+      list.innerHTML = '<div class="tx-card-empty">신청 내역이 없습니다.</div>';
       return;
     }
 
-    const dirLabel = { buy: 'USDT→MyCoin', sell: 'MyCoin→USDT' };
+    const dirLabel = { buy: 'USDT → MyCoin', sell: 'MyCoin → USDT' };
     const statusLabel = { pending: '대기중', approved: '승인됨', rejected: '거절됨' };
 
-    tbody.innerHTML = data
+    list.innerHTML = data
       .map(
         (t) => `
-      <tr>
-        <td>${new Date(t.created_at).toLocaleString('ko-KR')}</td>
-        <td>${dirLabel[t.direction]}</td>
-        <td>${fmtWon(t.mycoin_amount)}</td>
-        <td>${fmtWon(t.usdt_amount)}</td>
-        <td><span class="demo-badge ${t.status}">${statusLabel[t.status]}</span></td>
-      </tr>`
+      <div class="tx-card">
+        <div class="tx-card-top">
+          <span class="tx-card-date">${fmtDate(t.created_at)}</span>
+          <span class="demo-badge ${t.status}">${statusLabel[t.status]}</span>
+        </div>
+        <div class="tx-card-dir">${dirLabel[t.direction]}</div>
+        <div class="tx-card-amounts">
+          <b>${fmtWon(t.mycoin_amount)} MyCoin</b><span class="sep">·</span><b>${fmtWon(t.usdt_amount)} USDT</b>
+        </div>
+      </div>`
       )
       .join('');
   }
