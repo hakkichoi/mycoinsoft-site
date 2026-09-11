@@ -1,30 +1,32 @@
 /* ============================================================
-   MyCoin 데모 랜딩 — v3
+   MyCoin 데모 랜딩 — v4 (라이트 테마)
    nav / footer(바깥)는 css/style.css(마이코인소프트 본 사이트)를 그대로 쓰고,
    .demo-frame 안쪽은 이 파일로 스타일링되는 "MyCoinLanding" 샘플 사이트입니다.
+   -- 클래스명은 이전 버전(dk- 접두어)과 동일하게 유지해 구조를 재사용했고,
+      색상 값만 밝은 톤으로 전면 교체했습니다.
 ============================================================ */
 
 :root {
-  --dk-bg: #0A0A14;
-  --dk-bg-alt: #11111F;
-  --dk-panel: rgba(255, 255, 255, 0.045);
-  --dk-panel-border: rgba(255, 255, 255, 0.09);
-  --dk-line: rgba(255, 255, 255, 0.08);
-  --dk-purple: #8B5CF6;
-  --dk-blue: #4F8CFF;
-  --dk-cyan: #4FD1FF;
-  --dk-gold: #F3C34D;
-  --dk-text: #F3F1FA;
-  --dk-text-mute: #ABA7C8;
-  --dk-text-faint: #716D8F;
-  --dk-danger: #FF6B6B;
-  --dk-success: #4FE3A1;
+  --dk-bg: #FBFDFC;
+  --dk-bg-alt: #F1F6F4;
+  --dk-panel: #FFFFFF;
+  --dk-panel-border: rgba(20, 40, 35, 0.09);
+  --dk-line: rgba(20, 40, 35, 0.09);
+  --dk-purple: #14A87F;
+  --dk-blue: #2F8FE0;
+  --dk-cyan: #17B8A6;
+  --dk-gold: #C08A1E;
+  --dk-text: #16241F;
+  --dk-text-mute: #5B6B65;
+  --dk-text-faint: #8C9A94;
+  --dk-danger: #E5484D;
+  --dk-success: #1D9A6C;
 }
 
 .demo-notice {
-  background: #171126; color: #D9CFFF; font-size: 12.5px; text-align: center; padding: 9px 16px;
+  background: #103B31; color: #D9F5EC; font-size: 12.5px; text-align: center; padding: 9px 16px;
 }
-.demo-notice b { color: #B69CFF; }
+.demo-notice b { color: #6FE3C4; }
 
 /* ---------------- Outer frame ---------------- */
 .demo-frame-section { background: var(--bg-alt, #FFFBF0); padding: 56px 0; }
@@ -32,16 +34,16 @@
 
 .demo-frame {
   max-width: 1180px; margin: 0 auto; border-radius: 22px; overflow: hidden;
-  border: 1px solid rgba(0,0,0,0.08); box-shadow: 0 30px 60px -30px rgba(30, 20, 5, 0.35);
+  border: 1px solid rgba(0,0,0,0.08); box-shadow: 0 30px 60px -30px rgba(30, 20, 5, 0.25);
 }
-.demo-frame-bar { background: #14101F; display: flex; align-items: center; gap: 10px; padding: 11px 16px; }
+.demo-frame-bar { background: #EDF3F1; display: flex; align-items: center; gap: 10px; padding: 11px 16px; border-bottom: 1px solid var(--dk-line); }
 .demo-frame-bar .dot { width: 10px; height: 10px; border-radius: 50%; }
 .demo-frame-bar .dot.r { background: #FF6B6B; }
 .demo-frame-bar .dot.y { background: #FFC24B; }
 .demo-frame-bar .dot.g { background: #4FE3A1; }
 .demo-frame-bar .frame-url {
   margin-left: 8px; font-family: var(--font-display); font-size: 12px; color: var(--dk-text-faint);
-  background: rgba(255,255,255,0.05); padding: 4px 12px; border-radius: 100px;
+  background: #FFFFFF; border: 1px solid var(--dk-line); padding: 4px 12px; border-radius: 100px;
 }
 
 .demo-app { background: var(--dk-bg); color: var(--dk-text); font-family: var(--font-kr); }
@@ -51,6 +53,7 @@
 .inner-nav {
   display: flex; align-items: center; justify-content: space-between;
   padding: 16px 28px; border-bottom: 1px solid var(--dk-line); flex-wrap: wrap; gap: 12px;
+  background: #FFFFFF;
 }
 .inner-logo { font-family: var(--font-display); font-weight: 700; font-size: 16.5px; display: flex; align-items: center; gap: 8px; }
 .inner-logo .dotc { width: 8px; height: 8px; border-radius: 50%; background: linear-gradient(100deg, var(--dk-purple), var(--dk-cyan)); }
@@ -58,10 +61,10 @@
 .inner-menu a:hover { color: var(--dk-text); }
 .inner-auth { display: flex; align-items: center; gap: 10px; font-size: 13px; }
 .inner-auth a, .inner-auth button {
-  background: rgba(255,255,255,0.05); border: 1px solid var(--dk-line); color: var(--dk-text);
+  background: #F1F6F4; border: 1px solid var(--dk-line); color: var(--dk-text);
   padding: 7px 15px; border-radius: 100px; font-size: 12.5px;
 }
-.inner-auth .primary { background: linear-gradient(100deg, var(--dk-purple), var(--dk-blue)); border: none; color: #fff; }
+.inner-auth .primary { background: linear-gradient(100deg, var(--dk-purple), var(--dk-cyan)); border: none; color: #fff; }
 .inner-auth span.who { color: var(--dk-text-mute); }
 
 /* ---------------- Hero ---------------- */
@@ -70,15 +73,14 @@
   content: '';
   position: absolute; inset: 0;
   background:
-    radial-gradient(ellipse 620px 420px at 15% 0%, rgba(139,92,246,0.32), transparent 60%),
-    radial-gradient(ellipse 620px 420px at 88% 15%, rgba(79,140,255,0.26), transparent 60%),
-    radial-gradient(ellipse 520px 420px at 50% 105%, rgba(79,209,255,0.14), transparent 65%);
+    radial-gradient(ellipse 620px 420px at 15% 0%, rgba(20,168,127,0.14), transparent 60%),
+    radial-gradient(ellipse 620px 420px at 88% 15%, rgba(47,143,224,0.12), transparent 60%),
+    radial-gradient(ellipse 520px 420px at 50% 105%, rgba(23,184,166,0.10), transparent 65%);
   pointer-events: none;
 }
 .demo-hero::after {
-  content: ''; position: absolute; inset: 0; pointer-events: none; opacity: 0.5;
-  background-image:
-    radial-gradient(circle, rgba(255,255,255,0.10) 1px, transparent 1.4px);
+  content: ''; position: absolute; inset: 0; pointer-events: none; opacity: 0.6;
+  background-image: radial-gradient(circle, rgba(20,40,35,0.07) 1px, transparent 1.4px);
   background-size: 26px 26px;
   mask-image: radial-gradient(ellipse 700px 380px at 50% 30%, black, transparent 70%);
 }
@@ -86,10 +88,10 @@
 .demo-eyebrow {
   display: inline-flex; align-items: center; gap: 8px;
   font-family: var(--font-display); font-size: 11.5px; letter-spacing: 0.14em; text-transform: uppercase;
-  color: var(--dk-cyan); background: rgba(79,209,255,0.08); border: 1px solid rgba(79,209,255,0.25);
+  color: var(--dk-cyan); background: rgba(23,184,166,0.08); border: 1px solid rgba(23,184,166,0.28);
   padding: 6px 14px; border-radius: 100px; margin-bottom: 20px;
 }
-.demo-hero h1 { font-size: clamp(24px, 3.6vw, 34px); font-weight: 700; line-height: 1.3; margin: 0 0 14px; }
+.demo-hero h1 { font-size: clamp(24px, 3.6vw, 34px); font-weight: 700; line-height: 1.3; margin: 0 0 14px; color: var(--dk-text); }
 .demo-hero h1 .grad {
   background: linear-gradient(100deg, var(--dk-purple), var(--dk-blue), var(--dk-cyan));
   -webkit-background-clip: text; background-clip: text; color: transparent;
@@ -101,9 +103,9 @@
   padding: 12px 24px; border-radius: 100px; font-size: 14px; font-weight: 700; border: none;
 }
 .demo-btn-primary { background: linear-gradient(100deg, var(--dk-purple), var(--dk-blue)); color: #fff; }
-.demo-btn-primary:hover { filter: brightness(1.08); }
-.demo-btn-ghost { background: rgba(255,255,255,0.05); color: var(--dk-text); border: 1px solid var(--dk-line); }
-.demo-btn-danger { background: rgba(255,107,107,0.1); color: var(--dk-danger); border: 1px solid rgba(255,107,107,0.3); }
+.demo-btn-primary:hover { filter: brightness(1.05); }
+.demo-btn-ghost { background: #F1F6F4; color: var(--dk-text); border: 1px solid var(--dk-line); }
+.demo-btn-danger { background: rgba(229,72,77,0.08); color: var(--dk-danger); border: 1px solid rgba(229,72,77,0.28); }
 .demo-btn-sm { padding: 8px 16px; font-size: 12.5px; }
 .demo-btn-block { width: 100%; }
 
@@ -114,12 +116,13 @@
   font-family: var(--font-display); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase;
   color: var(--dk-text-faint);
 }
-.demo-section-head h2 { font-size: 22px; margin: 8px 0 6px; }
+.demo-section-head h2 { font-size: 22px; margin: 8px 0 6px; color: var(--dk-text); }
 .demo-section-head p { color: var(--dk-text-mute); font-size: 13.5px; max-width: 520px; margin: 0 auto; }
 
 .demo-card {
   background: var(--dk-panel); border: 1px solid var(--dk-panel-border);
-  backdrop-filter: blur(16px); border-radius: 18px; padding: 26px 24px;
+  box-shadow: 0 10px 26px -20px rgba(20,40,35,0.25);
+  border-radius: 18px; padding: 26px 24px;
 }
 
 /* ---------------- MyCoin 3-card section ---------------- */
@@ -128,8 +131,8 @@
 .mycoin-card .ic {
   width: 44px; height: 44px; border-radius: 12px; margin: 0 auto 14px;
   display: flex; align-items: center; justify-content: center; font-size: 20px;
-  background: linear-gradient(145deg, rgba(139,92,246,0.25), rgba(79,140,255,0.08));
-  border: 1px solid rgba(139,92,246,0.35);
+  background: linear-gradient(145deg, rgba(20,168,127,0.16), rgba(47,143,224,0.06));
+  border: 1px solid rgba(20,168,127,0.28);
 }
 .mycoin-card p { font-size: 13.5px; color: var(--dk-text-mute); margin: 0; line-height: 1.7; }
 .mycoin-card b { color: var(--dk-text); }
@@ -145,10 +148,11 @@
 .donut-wrap { display: flex; flex-direction: column; align-items: center; gap: 18px; }
 .donut { width: 190px; height: 190px; border-radius: 50%; position: relative; }
 .donut-hole {
-  position: absolute; inset: 26px; border-radius: 50%; background: var(--dk-bg);
+  position: absolute; inset: 26px; border-radius: 50%; background: var(--dk-panel);
+  box-shadow: 0 0 0 1px var(--dk-line) inset;
   display: flex; align-items: center; justify-content: center; flex-direction: column;
 }
-.donut-hole b { font-family: var(--font-display); font-size: 20px; }
+.donut-hole b { font-family: var(--font-display); font-size: 20px; color: var(--dk-text); }
 .donut-hole span { font-size: 10.5px; color: var(--dk-text-faint); }
 
 .donut-legend { width: 100%; display: flex; flex-direction: column; gap: 8px; }
@@ -162,8 +166,8 @@
 .chart-block .sub { font-size: 11.5px; color: var(--dk-text-faint); margin: 0 0 12px; }
 .chart-svg { width: 100%; height: 150px; display: block; overflow: visible; }
 .chart-tooltip {
-  position: absolute; pointer-events: none; background: #17131F; border: 1px solid var(--dk-panel-border);
-  color: var(--dk-text); font-size: 11.5px; padding: 5px 10px; border-radius: 8px; transform: translate(-50%, -130%);
+  position: absolute; pointer-events: none; background: #16241F; border: 1px solid rgba(255,255,255,0.1);
+  color: #fff; font-size: 11.5px; padding: 5px 10px; border-radius: 8px; transform: translate(-50%, -130%);
   white-space: nowrap; opacity: 0; transition: opacity 0.12s; font-family: var(--font-display); z-index: 5;
 }
 .chart-tooltip.show { opacity: 1; }
@@ -174,7 +178,7 @@
 .book {
   width: 130px; height: 178px; border-radius: 4px 10px 10px 4px; position: relative;
   display: flex; align-items: flex-end; padding: 16px 14px;
-  box-shadow: -6px 0 0 rgba(0,0,0,0.25), 0 18px 34px -14px rgba(0,0,0,0.6);
+  box-shadow: -6px 0 0 rgba(0,0,0,0.14), 0 18px 34px -14px rgba(20,40,35,0.35);
   transform: perspective(600px) rotateY(-8deg);
   transition: transform 0.25s;
   cursor: pointer;
@@ -182,29 +186,27 @@
 .book:hover { transform: perspective(600px) rotateY(0deg) translateY(-4px); }
 .book::before {
   content: ''; position: absolute; left: 0; top: 3px; bottom: 3px; width: 8px;
-  background: rgba(255,255,255,0.25); border-radius: 4px 0 0 4px;
+  background: rgba(255,255,255,0.3); border-radius: 4px 0 0 4px;
 }
-.book.kr { background: linear-gradient(160deg, #8B5CF6, #4F8CFF); }
-.book.en { background: linear-gradient(160deg, #4FD1FF, #4FE3A1); }
-.book span { color: #fff; font-weight: 700; font-size: 14px; line-height: 1.4; text-shadow: 0 2px 8px rgba(0,0,0,0.25); }
+.book.kr { background: linear-gradient(160deg, #14A87F, #2F8FE0); }
+.book.en { background: linear-gradient(160deg, #17B8A6, #38C98D); }
+.book span { color: #fff; font-weight: 700; font-size: 14px; line-height: 1.4; text-shadow: 0 2px 8px rgba(0,0,0,0.2); }
 .book-caption { text-align: center; font-size: 11.5px; color: var(--dk-text-faint); margin-top: 30px; }
 
 /* ---------------- 코인교환 ---------------- */
-.exchange-rate-note {
-  display: inline-flex; align-items: center; gap: 8px; margin: 0 auto 22px; display: flex; justify-content: center;
-}
+.exchange-rate-note { margin: 0 auto 22px; display: flex; justify-content: center; }
 .exchange-rate-pill {
-  background: rgba(243,195,77,0.1); border: 1px solid rgba(243,195,77,0.3); color: var(--dk-gold);
+  background: rgba(192,138,30,0.08); border: 1px solid rgba(192,138,30,0.3); color: var(--dk-gold);
   font-family: var(--font-display); font-size: 13px; font-weight: 700; padding: 7px 16px; border-radius: 100px;
 }
 .exchange-toggle { display: flex; gap: 8px; margin-bottom: 16px; }
 .exchange-toggle button {
   flex: 1; padding: 10px; border-radius: 100px; border: 1px solid var(--dk-line);
-  background: rgba(255,255,255,0.03); color: var(--dk-text-mute); font-weight: 600; font-size: 13px;
+  background: #F1F6F4; color: var(--dk-text-mute); font-weight: 600; font-size: 13px;
 }
 .exchange-toggle button.active { background: linear-gradient(100deg, var(--dk-purple), var(--dk-blue)); color: #fff; border-color: transparent; }
 .exchange-preview {
-  background: rgba(255,255,255,0.03); border: 1px dashed rgba(255,255,255,0.18); border-radius: 12px;
+  background: #F1F6F4; border: 1px dashed var(--dk-line); border-radius: 12px;
   padding: 12px 14px; margin: 14px 0; font-size: 13px; color: var(--dk-text-mute); text-align: center;
 }
 .exchange-preview b { color: var(--dk-cyan); font-family: var(--font-display); }
@@ -213,7 +215,7 @@
 .demo-row label { display: block; font-size: 12.5px; color: var(--dk-text-mute); margin-bottom: 6px; }
 .demo-row input, .demo-row select {
   width: 100%; padding: 11px 14px; border-radius: 10px; border: 1px solid var(--dk-line);
-  background: rgba(255,255,255,0.03); color: var(--dk-text); font-size: 14px; font-family: inherit;
+  background: #FBFDFC; color: var(--dk-text); font-size: 14px; font-family: inherit;
 }
 .demo-row input::placeholder { color: var(--dk-text-faint); }
 .demo-row input:focus, .demo-row select:focus { border-color: var(--dk-purple); outline: none; }
@@ -235,9 +237,9 @@ table.demo-tx-table { width: 100%; border-collapse: collapse; font-size: 13px; m
 table.demo-tx-table th { text-align: left; color: var(--dk-text-faint); font-weight: 600; padding: 8px 6px; border-bottom: 1px solid var(--dk-line); font-size: 11px; text-transform: uppercase; }
 table.demo-tx-table td { padding: 9px 6px; border-bottom: 1px solid var(--dk-line); color: var(--dk-text-mute); }
 .demo-badge { padding: 2px 9px; border-radius: 100px; font-size: 11px; font-weight: 700; }
-.demo-badge.pending { background: rgba(255,255,255,0.08); color: var(--dk-text-mute); }
-.demo-badge.approved { background: rgba(79,227,161,0.14); color: var(--dk-success); }
-.demo-badge.rejected { background: rgba(255,107,107,0.12); color: var(--dk-danger); }
+.demo-badge.pending { background: #F1F6F4; color: var(--dk-text-mute); }
+.demo-badge.approved { background: rgba(29,154,108,0.1); color: var(--dk-success); }
+.demo-badge.rejected { background: rgba(229,72,77,0.08); color: var(--dk-danger); }
 
 /* ---------------- 마이페이지(로그인/대시보드) ---------------- */
 .demo-balance { text-align: center; }
@@ -253,7 +255,7 @@ table.demo-tx-table td { padding: 9px 6px; border-bottom: 1px solid var(--dk-lin
 .newsletter-inline-form { display: flex; gap: 8px; flex-wrap: wrap; max-width: 420px; margin: 0 auto; }
 .newsletter-inline-form input {
   flex: 1 1 200px; padding: 11px 14px; border-radius: 100px; border: 1px solid var(--dk-line);
-  background: rgba(255,255,255,0.03); color: var(--dk-text); font-size: 13.5px; font-family: inherit;
+  background: #FBFDFC; color: var(--dk-text); font-size: 13.5px; font-family: inherit;
 }
 .newsletter-inline-form button {
   background: linear-gradient(100deg, var(--dk-purple), var(--dk-blue)); color: #fff; border: none;
@@ -263,7 +265,7 @@ table.demo-tx-table td { padding: 9px 6px; border-bottom: 1px solid var(--dk-lin
 /* ---------------- 재단정보 (inner footer) ---------------- */
 .inner-footer {
   text-align: center; padding: 26px 24px; border-top: 1px solid var(--dk-line);
-  font-size: 12.5px; color: var(--dk-text-faint);
+  font-size: 12.5px; color: var(--dk-text-faint); background: #F1F6F4;
 }
 .inner-footer b { color: var(--dk-text-mute); font-family: var(--font-display); }
 
