@@ -176,3 +176,23 @@ table.admin-table tr:last-child td { border-bottom: none; }
 @media (max-width: 760px) {
   .stat-row { grid-template-columns: 1fr; }
 }
+
+/* ---------------- v3: 차트 데이터 / 환율 설정 ---------------- */
+.slot-grid {
+  display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; margin-bottom: 16px;
+}
+.slot-cell { background: rgba(255,255,255,0.03); border: 1px solid var(--dk-line); border-radius: 10px; padding: 10px; }
+.slot-cell .idx { font-size: 10.5px; color: var(--dk-text-faint); margin-bottom: 6px; }
+.slot-cell input {
+  width: 100%; padding: 8px 9px; border-radius: 8px; border: 1px solid var(--dk-line);
+  background: rgba(255,255,255,0.03); color: var(--dk-text); font-size: 12.5px; font-family: inherit;
+}
+.slot-cell.locked input { opacity: 0.55; }
+.slot-cell .locked-tag { font-size: 9.5px; color: var(--dk-text-faint); margin-top: 4px; display: block; }
+
+.rate-form-row { display: flex; gap: 10px; align-items: flex-end; }
+.rate-form-row .demo-row { flex: 1; margin-bottom: 0; }
+
+@media (max-width: 600px) {
+  .slot-grid { grid-template-columns: repeat(2, 1fr); }
+}

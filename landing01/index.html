@@ -32,7 +32,6 @@
 
 <main>
 
-  <!-- ============================================================ DEMO FRAME (Hero와 같은 가로폭 안에 데모 사이트 전체가 들어감) ============================================================ -->
   <section class="demo-frame-section">
     <div class="wrap">
       <p class="demo-caption">아래는 마이코인소프트가 제작한 코인 홈페이지 예시를 그대로 담은 미리보기입니다.</p>
@@ -44,28 +43,169 @@
         </div>
 
         <div class="demo-app">
-          <div class="demo-mini-nav">DEMO COIN <span class="tag">SAMPLE</span></div>
 
-          <!-- ---- 데모 Hero ---- -->
-          <header class="demo-hero">
+          <!-- ============ 내부 사이트 nav (MyCoinLanding) ============ -->
+          <nav class="inner-nav">
+            <div class="inner-logo"><span class="dotc"></span>MyCoinLanding</div>
+            <div class="inner-menu">
+              <a href="#home">홈</a>
+              <a href="#mycoin">MyCoin</a>
+              <a href="#coininfo">코인정보</a>
+              <a href="#whitepaper">백서</a>
+              <a href="#exchange">코인교환</a>
+              <a href="#newsletter">뉴스레터</a>
+              <a href="#foundation">재단정보</a>
+            </div>
+            <div class="inner-auth" id="inner-auth">
+              <a href="#mypage" class="primary">로그인</a>
+            </div>
+          </nav>
+
+          <!-- ============ Hero ============ -->
+          <header class="demo-hero" id="home">
             <div class="demo-wrap">
-              <div class="demo-eyebrow">◆ AI-Powered Crypto Sample</div>
-              <h1>당신의 코인,<br><span class="grad">DEMO COIN</span>으로 미리 만나보세요</h1>
-              <p>마이코인소프트가 제작하는 코인 홈페이지가 실제로 어떻게 동작하는지 지금 바로 체험해보세요. 지갑, 입출금, 추천인 시스템까지 실제 데이터로 작동합니다.</p>
-              <div class="demo-stats">
-                <div class="demo-stat-pill"><b id="stat-total-users">-</b>체험 중인 회원</div>
-                <div class="demo-stat-pill"><b>₩1,000,000</b>지급 자산</div>
-                <div class="demo-stat-pill"><b>100%</b>무료 체험</div>
-              </div>
+              <div class="demo-eyebrow">◆ Blockchain Exchange Sample</div>
+              <h1>마이코인소프트가 제공하는<br><span class="grad">최고의 코인 랜딩</span></h1>
+              <p>코인 홈페이지에는 회원가입을 통한 코인 입출금을 DB를 통해서 지원합니다.</p>
+              <a href="#mypage" class="demo-btn demo-btn-primary">마이페이지 경험하기</a>
             </div>
           </header>
 
-          <!-- ---- 로그인 / 대시보드 ---- -->
-          <section class="demo-section">
-            <div class="demo-wrap">
+          <!-- ============ MyCoin 3카드 ============ -->
+          <section class="demo-section" id="mycoin">
+            <div class="demo-wrap-inner">
+              <div class="demo-section-head">
+                <div class="tag">MyCoin</div>
+                <h2>MyCoin이 특별한 이유</h2>
+              </div>
+              <div class="mycoin-grid">
+                <div class="demo-card mycoin-card">
+                  <div class="ic">🥇</div>
+                  <p><b>MyCoin</b>은 금 1g을 기준으로 교환의 가치가 부여됩니다.<br><b>1 MyCoin = 1g / Gold</b></p>
+                </div>
+                <div class="demo-card mycoin-card">
+                  <div class="ic">💱</div>
+                  <p><b>MyCoin</b>은 USDT 등 지원하는 스테이블 코인을 기준으로 교환이 됩니다.</p>
+                </div>
+                <div class="demo-card mycoin-card">
+                  <div class="ic">📈</div>
+                  <p><b>MyCoin</b>의 가치는 USD Stable Coin 가치를 기준으로 업그레이드 됩니다.</p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- ============ 코인정보 ============ -->
+          <section class="demo-section" id="coininfo">
+            <div class="demo-wrap-inner">
+              <div class="demo-section-head">
+                <div class="tag">Token Info</div>
+                <h2>코인정보</h2>
+              </div>
+
+              <div class="demo-card">
+                <div class="coin-facts">
+                  <div class="fact"><span class="k">Token Full Name</span><span class="v">My Gold Stable Coin (샘플)</span></div>
+                  <div class="fact"><span class="k">Symbol</span><span class="v">MyCoin (샘플)</span></div>
+                  <div class="fact"><span class="k">Mainnet</span><span class="v">Tron Network</span></div>
+                  <div class="fact"><span class="k">총발행 수량</span><span class="v">10,000,000,000 MyCoin</span></div>
+                  <div class="fact" style="grid-column:1/-1;"><span class="k">Address</span><span class="v">Tpdk144k0ckek4dkf (샘플)</span></div>
+                </div>
+
+                <div class="coin-info-grid">
+                  <div class="donut-wrap">
+                    <div class="donut" style="background: conic-gradient(#8B5CF6 0% 5%, #4F8CFF 5% 8%, #F3C34D 8% 18%, #FF6B6B 18% 20%, #4FE3A1 20% 100%);">
+                      <div class="donut-hole"><b>100%</b><span>Total Supply</span></div>
+                    </div>
+                    <div class="donut-legend">
+                      <div class="item"><span class="sw" style="background:#8B5CF6"></span>에어드랍<b>5%</b></div>
+                      <div class="item"><span class="sw" style="background:#4F8CFF"></span>마케팅 및 광고<b>3%</b></div>
+                      <div class="item"><span class="sw" style="background:#F3C34D"></span>사전판매<b>10%</b></div>
+                      <div class="note">No Discount · 연 25% 파밍 수수료 지급 예정 · Hardcap 3% / Softcap 7%</div>
+                      <div class="item"><span class="sw" style="background:#FF6B6B"></span>재단 보유<b>2%</b></div>
+                      <div class="note">3년 락업 후 매년 0.25% 물량 동의 확정 후 해제</div>
+                      <div class="item"><span class="sw" style="background:#4FE3A1"></span>일반 교환 물량<b>80%</b></div>
+                      <div class="note">일반 홀더 상시 재교환 목적 보유</div>
+                    </div>
+                  </div>
+
+                  <div>
+                    <div class="chart-block">
+                      <h4>코인 거래 그래프</h4>
+                      <p class="sub">입출금 거래 수량 추이 · 점에 마우스를 올리면 수량이 표시됩니다</p>
+                      <div style="position:relative;">
+                        <svg class="chart-svg" id="volume-chart" viewBox="0 0 460 150" preserveAspectRatio="none"></svg>
+                        <div class="chart-tooltip" id="volume-tooltip"></div>
+                      </div>
+                    </div>
+                    <div class="chart-block">
+                      <h4>코인 가격 그래프</h4>
+                      <p class="sub">USD 기준 가격 추이</p>
+                      <div style="position:relative;">
+                        <svg class="chart-svg" id="price-chart" viewBox="0 0 460 150" preserveAspectRatio="none"></svg>
+                        <div class="chart-tooltip" id="price-tooltip"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- ============ 백서 ============ -->
+          <section class="demo-section" id="whitepaper">
+            <div class="demo-wrap-inner">
+              <div class="demo-section-head">
+                <div class="tag">Whitepaper</div>
+                <h2>백서</h2>
+              </div>
+              <div class="book-row">
+                <div class="book kr"><span>한국어<br>백서</span></div>
+                <div class="book en"><span>English<br>Whitepaper</span></div>
+              </div>
+              <p class="book-caption">* 샘플 페이지로 실제 파일 다운로드는 제공되지 않습니다.</p>
+            </div>
+          </section>
+
+          <!-- ============ 코인교환 ============ -->
+          <section class="demo-section" id="exchange">
+            <div class="demo-wrap-inner" style="max-width:440px;">
+              <div class="demo-section-head">
+                <div class="tag">Exchange</div>
+                <h2>코인교환</h2>
+                <p>코인 교환은 MyCoin과의 교환을 위한 신청 절차이며 승인 절차를 거쳐 교환이 이루어집니다.</p>
+              </div>
+
+              <div class="exchange-rate-note"><div class="exchange-rate-pill">1 MyCoin = <span id="exchange-rate-val">24</span> USDT</div></div>
+
+              <div class="demo-card">
+                <div class="exchange-toggle">
+                  <button type="button" class="active" data-dir="buy">USDT → MyCoin</button>
+                  <button type="button" data-dir="sell">MyCoin → USDT</button>
+                </div>
+                <form id="exchange-form">
+                  <div class="demo-row">
+                    <label for="exchange-amount">MyCoin 수량</label>
+                    <input type="number" id="exchange-amount" min="0" step="0.01" placeholder="교환할 수량 입력">
+                  </div>
+                  <div class="exchange-preview" id="exchange-preview">수량을 입력하면 예상 교환 값이 표시됩니다.</div>
+                  <button type="submit" class="demo-btn demo-btn-primary demo-btn-block">교환 신청하기</button>
+                </form>
+                <div class="demo-msg" id="exchange-msg"></div>
+              </div>
+            </div>
+          </section>
+
+          <!-- ============ 마이페이지 (로그인/대시보드) ============ -->
+          <section class="demo-section" id="mypage">
+            <div class="demo-wrap-inner" style="max-width:440px;">
+              <div class="demo-section-head">
+                <div class="tag">My Page</div>
+                <h2>마이페이지</h2>
+              </div>
 
               <div id="auth-section" class="demo-card">
-                <h3>로그인</h3>
+                <h3 style="text-align:center;margin:0 0 18px;font-size:16px;">로그인</h3>
                 <form id="login-form">
                   <div class="demo-row">
                     <label for="li-username">아이디</label>
@@ -78,7 +218,7 @@
                       <button type="button" class="pw-eye" id="pw-toggle" aria-label="비밀번호 표시">👁</button>
                     </div>
                   </div>
-                  <button type="submit" class="demo-btn demo-btn-primary">로그인</button>
+                  <button type="submit" class="demo-btn demo-btn-primary demo-btn-block">로그인</button>
                 </form>
                 <div class="demo-msg" id="login-msg"></div>
                 <p class="demo-caution">별도 회원가입 없이, 이미 입력된 데모 계정으로 바로 체험해보실 수 있습니다.</p>
@@ -86,35 +226,15 @@
 
               <div id="dash-section" style="display:none;">
                 <div class="demo-card demo-balance">
-                  <div class="amt" id="dash-balance">₩0</div>
-                  <div class="lbl">내 데모 지갑 잔액 · <b id="dash-username"></b> 님</div>
-                  <div class="demo-ref-box">
-                    <span>내 추천 코드: <code id="dash-refcode">-</code></span>
-                    <button class="demo-btn demo-btn-ghost demo-btn-sm" id="copy-ref-btn">복사</button>
-                  </div>
+                  <div class="amt" id="dash-balance">0 MyCoin</div>
+                  <div class="lbl"><b id="dash-username"></b> 님의 MyCoin 잔고</div>
                 </div>
 
                 <div class="demo-card" style="margin-top:16px;">
-                  <div class="demo-section-title" style="text-align:left;">입출금 신청</div>
-                  <form id="tx-form">
-                    <div class="demo-row">
-                      <label for="tx-type">종류</label>
-                      <select id="tx-type">
-                        <option value="deposit">입금 신청</option>
-                        <option value="withdraw">출금 신청</option>
-                      </select>
-                    </div>
-                    <div class="demo-row">
-                      <label for="tx-amount">금액 (원)</label>
-                      <input type="number" id="tx-amount" min="1000" step="1000" required placeholder="예: 50000">
-                    </div>
-                    <button type="submit" class="demo-btn demo-btn-primary">신청하기</button>
-                  </form>
-                  <div class="demo-msg" id="tx-msg"></div>
-
+                  <h4 style="margin:0 0 4px;font-size:13.5px;">코인교환 신청 내역</h4>
                   <table class="demo-tx-table" id="tx-table">
-                    <thead><tr><th>일시</th><th>종류</th><th>금액</th><th>상태</th></tr></thead>
-                    <tbody><tr><td colspan="4">신청 내역이 없습니다.</td></tr></tbody>
+                    <thead><tr><th>일시</th><th>구분</th><th>MyCoin</th><th>USDT</th><th>상태</th></tr></thead>
+                    <tbody><tr><td colspan="5">신청 내역이 없습니다.</td></tr></tbody>
                   </table>
                 </div>
 
@@ -123,21 +243,34 @@
                   <button class="demo-btn demo-btn-danger" id="reset-btn">내 데모 초기화</button>
                 </div>
               </div>
-
             </div>
           </section>
 
-          <!-- ---- 공지사항 ---- -->
-          <section class="demo-section">
-            <div class="demo-wrap">
-              <div class="demo-section-title">공지사항</div>
-              <div class="demo-card" id="notice-list">
-                <div class="demo-notice-item">불러오는 중...</div>
+          <!-- ============ 뉴스레터 ============ -->
+          <section class="demo-section" id="newsletter">
+            <div class="demo-wrap-inner" style="max-width:480px;text-align:center;">
+              <div class="demo-section-head">
+                <div class="tag">Newsletter</div>
+                <h2>뉴스레터</h2>
+                <p>이메일 등록만으로 MyCoin 재단의 최신 소식을 받아가세요. (샘플 페이지이므로 초기화하면 저장되지 않습니다.)</p>
               </div>
+              <form id="demo-newsletter-form" class="newsletter-inline-form">
+                <input type="email" id="demo-newsletter-email" placeholder="이메일 주소" required>
+                <button type="submit">등록하기</button>
+              </form>
+              <div class="demo-msg" id="demo-newsletter-msg"></div>
             </div>
           </section>
 
-          <div class="demo-admin-link">이 데모의 관리자 화면도 함께 볼 수 있습니다 — <a href="../admin01/">admin01 바로가기 →</a></div>
+          <!-- ============ 재단정보 (내부 footer) ============ -->
+          <div class="inner-footer" id="foundation">
+            <b>MyCoin Foundation</b>
+          </div>
+
+          <div class="demo-admin-link" style="text-align:center;padding-bottom:26px;font-size:12px;color:var(--dk-text-faint);">
+            이 데모의 관리자 화면도 함께 볼 수 있습니다 — <a href="../admin01/" style="color:var(--dk-cyan);">admin01 바로가기 →</a>
+          </div>
+
         </div>
       </div>
     </div>
